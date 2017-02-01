@@ -1,6 +1,6 @@
 <div class="blog-post">
 	
-	<h2 class="blog-post-title">
+	<h3 class="blog-post-title">
 	
 		<a href="/posts/{{ $post->id}}">
 		
@@ -8,7 +8,7 @@
 		
 		</a>
 	
-	</h2>
+	</h3>
 	
 	<p class="blog-post-meta">
 		

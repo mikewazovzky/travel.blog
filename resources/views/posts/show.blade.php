@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.blog')
 
-@section('content')	
+@section('blog-content')	
 	
 	<h1>{{ $post->title }}</h1>
-	By user <strong>{{ $post->user->name }}</strong>
+	By user <strong> $post->user->name </strong>
 	Created At:
 		
 	{{ $post->created_at->toFormattedDateString() }} 
@@ -12,12 +12,6 @@
 		
 	{{ $post->updated_at->toFormattedDateString() }} 
 	
-	@if(count($post->tags))
-		<br>Tags: &nbsp
-		@foreach($post->tags as $tag)
-			<a href="/posts/tags/{{ $tag->name }}">{{ $tag->name }} </a>
-		@endforeach
-	@endif
 	<br>
 	
 	{{-- Edit button --}}
@@ -26,7 +20,7 @@
 		
 		{{ csrf_field() }}
 		
-		<input type="submit" class="btn btn-primary btn-sm" value="Edit"></input>
+		<input type="submit" class="btn btn-primary btn-xs" value="Edit"></input>
 		
 	</form>	
 	
@@ -39,27 +33,18 @@
 		
 		{{ csrf_field() }}
 		
-		<input type="submit" class="btn btn-danger btn-sm" value="Delete"></input>
+		<input type="submit" class="btn btn-danger btn-xs" value="Delete"></input>
 		
 	</form>
 	
     <hr>
-	<p>{{ $post->body}} </p>	
+	<p>{{ $post->excert}} </p>	
 	<hr>
 	
 	<div class="comments">
 		<h2>Comments</h2>
 		<ul class="list-group">
-			@foreach($post->comments as $comment)
-				<li class="list-group-item">
-					<strong>
-						{{ $comment->created_at->diffForHumans() }}&nbsp 
-					</strong>
-					by [{{ $comment->user->name }}]:&nbsp
-					
-					{{ $comment->body}} 
-				</li>
-			@endforeach
+
 		</ul>
 	</div>
 	<br>

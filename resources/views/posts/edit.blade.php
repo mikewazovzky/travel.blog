@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.blog')
 
-@section('content')	
+@section('blog-content')	
 	
 	<h1>Edit Post</h1>
     <hr>
