@@ -22,7 +22,7 @@
 				<li><a href="#">Contacts</a></li>
 				<!-- Flyers Project Navbar -->
 				<li class="dropdown">
-					<a href="/users" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Users <span class="caret"></span></a>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Users <span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="/users">Index</a></li>
 						<li><a href="/users/create">Create</a></li>

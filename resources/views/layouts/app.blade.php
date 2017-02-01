@@ -35,6 +35,7 @@
     <!-- Scripts -->
     <script src="/js/app.js"></script>
 	
+    
     @include('flash');    
     
 	@yield('footer.scripts')

@@ -22,7 +22,7 @@
 					<div class="form-group">
 						<label for="email" class="control-label col-sm-3">Email:</label>
 						<div class="col-sm-9">
-							<input type="email" name="email" class="form-control" value="{{ isset($user)? $user->email : old('email') }}" {{ isset($user)? 'disabled' : ''}}/>
+							<input type="email" name="email" class="form-control" value="{{ isset($user)? $user->email : old('email') }}" {{ isset($user)? 'readonly' : ''}}/>
 						</div>
 					</div>
 					
@@ -57,7 +57,7 @@
 				</div>
 				
 				<div class="col-xs-12 col-sm-4 userPhoto">
-					<img id="userImage" src="/images/avatars/user.png">
+					<img id="userImage" src="/images/avatars/{{ $imageSrc }}">
 					<p id="userInfo"></p>
 				</div>	
 				

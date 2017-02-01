@@ -11,7 +11,6 @@
 			@include('users.form', [
 				'submitButtonText' => 'Create User', 
 				'imageSrc' => 'user.png',
-				'emailDisabled' => false
 			])
 	
 		</form>

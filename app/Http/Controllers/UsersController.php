@@ -53,22 +53,18 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-	public function store()
+	public function store(Request $request)
     {
-		$this->validate(request(), [
+		$this->validate($request, [
 			'name' => 'required',
 			'email' => 'required|email|unique:users,email',
-			'password' => 'required|min:6|confirmed'
-			
-		]);		
-		
-		User::create([
-            'name' => request('name'),
-            'email' => request('email'),
-            'password' => bcrypt(request('password')),
-        ]);		
-				
-		return redirect('users'); 
+			'password' => 'required|min:6|confirmed',
+			'avatar' => 'sometimes|mimes:jpeg,jpg|max:100'
+		]);	
+        
+        $user = (new User)->updateData($request);	
+        
+        return redirect('users'); 
     }
 
     /**
@@ -88,17 +84,14 @@ class UsersController extends Controller
      * @param  \App\User $user
      * @return \Illuminate\Http\Response
      */
-	public function update(User $user)
+	public function update(Request $request, User $user)
 	{
-		$this->validate(request(), [
+		$this->validate($request, [
 			'name' => 'required',
 			'password' => 'required|min:6|confirmed'			
 		]);	
 		
-		$user->update([
-			'name' => request('name'), 
-			'password' => bcrypt(request('password'))
-		]);
+		$user->updateData($request);	
 		
 		return redirect('users');
 	}

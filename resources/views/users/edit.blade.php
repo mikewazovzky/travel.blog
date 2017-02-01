@@ -6,14 +6,19 @@
 		<h1> Update User Data</h1>
 		<hr>
 		
-		<form method="POST" action="{{ action('UsersController@update', ['id' => $user->id]) }}" class="form-horizontal" id="userForm" >
+		<form 
+            method="POST" 
+            action="{{ action('UsersController@update', ['id' => $user->id]) }}" 
+            class="form-horizontal" 
+            id="userForm" 
+            enctype="multipart/form-data"
+        >
 		
 			{{ method_field('PATCH') }}
 		
 			@include('users.form', [
 				'submitButtonText' => 'Update User', 
 				'imageSrc' => ($user->avatar ? : 'user.png'),
-				'emailDisabled' => true
 				])
 
 		</form>
