@@ -35,6 +35,7 @@
 
 	</div>
     
+	<hr>
     @include('layouts.footer'); 
 
     <!-- jQuery -->
