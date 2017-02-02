@@ -11231,6 +11231,8 @@ __webpack_require__(8);
 
 $(document).ready(function () {
   __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__components_users__["setEventHandlers"])();
+
+  $('#flash-message').delay(2000).fadeOut(1000);
 });
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
 

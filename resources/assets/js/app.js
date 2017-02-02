@@ -12,5 +12,8 @@ import { setEventHandlers } from './components/users';
 
 
 $(document).ready(function() {
-	setEventHandlers(); 	
+	setEventHandlers(); 
+
+    $('#flash-message').delay(2000).fadeOut(1000); 
+   
 });

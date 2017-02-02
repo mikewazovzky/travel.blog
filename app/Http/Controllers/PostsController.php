@@ -50,6 +50,8 @@ class PostsController extends Controller
         
         $post->tags()->attach(request('tags'));
         
+        session()->flash('message', 'Your post has been created.');
+        
         return redirect('/posts');
     }
 
@@ -88,6 +90,8 @@ class PostsController extends Controller
         
         $post->tags()->sync(request('tags'));
         
+        session()->flash('message', 'Your post has been updated.');
+        
         return redirect('/posts');
     }
 
@@ -100,6 +104,8 @@ class PostsController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
+        
+        session()->flash('alert', 'Your post has been deleted.');
         
         return redirect('/posts');
     }

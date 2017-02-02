@@ -51,7 +51,7 @@
 	
 	<script src="/js/app.js"></script>
     
-    @include('flash');    
+    @include('layouts.flash');    
 	
 </body>
 </html>
