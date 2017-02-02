@@ -9,6 +9,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/about', 'PagesController@about');
+Route::get('/contacts', 'PagesController@contacts');
+
 
 Route::resource('/users', 'UsersController');
 
