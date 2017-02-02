@@ -23,3 +23,13 @@
 <div class="form-group">
 	<button type="submit" class="btn btn-primary">Publish</button>
 </div>	
+
+@section('footer.scripts')
+    	
+    <script type="text/javascript">
+		$('#tags').select2({
+			placeholder: "Choose a tag"			
+		});
+	</script>
+
+@stop
