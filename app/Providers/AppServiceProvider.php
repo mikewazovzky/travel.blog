@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use App\Tag;
 use App\Post;
+use App\Tools\Country;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,7 +28,9 @@ class AppServiceProvider extends ServiceProvider
         
         view()->composer('posts.form', function($view){
             $tags = Tag::pluck('name', 'id');
-            $view->with(['tags' => $tags]);
+			$countries = Country::all();
+			
+            $view->with(['tags' => $tags, 'countries' => $countries]);
         });
     }
 

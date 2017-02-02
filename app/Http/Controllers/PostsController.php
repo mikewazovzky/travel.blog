@@ -44,12 +44,15 @@ class PostsController extends Controller
      */
     public function store()
     {
-        $this->validate(request(), [
+        
+		
+		$this->validate(request(), [
             'title' => 'required|max:255',
             'excert' => 'required',
+			'country' => 'required',
         ]);
         
-        $post = new Post(request(['title', 'excert']));
+		$post = new Post(request(['title', 'country', 'excert']));
         
         auth()->user()->publish($post);
         
@@ -91,9 +94,11 @@ class PostsController extends Controller
      */
     public function update(Post $post)
     {
-        $post->update(request(['title', 'excert']));
         
-        $post->tags()->sync(request('tags'));
+		
+		$post->update(request(['title', 'country', 'excert']));
+       
+        $post->tags()->sync((array)request('tags'));
         
         session()->flash('message', 'Your post has been updated.');
         

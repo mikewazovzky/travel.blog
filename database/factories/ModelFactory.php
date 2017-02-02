@@ -11,6 +11,8 @@
 |
 */
 
+use App\Tools\Country;
+
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     static $password;
@@ -29,6 +31,7 @@ $factory->define(App\Post::class, function (Faker\Generator $faker) {
     return [
         'user_id' => factory(App\User::class)->create()->id,
         'title' => $faker->sentence,
+		'country' => Country::code($faker->country),  
         'excert' => $faker->paragraph(),
     ];
 });

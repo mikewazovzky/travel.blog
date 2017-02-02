@@ -20,6 +20,7 @@ class CreatePostsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             
             $table->string('title');
+			$table->string('country', 40);
             $table->text('excert');
             
             $table->timestamps();

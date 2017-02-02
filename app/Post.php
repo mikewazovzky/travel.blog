@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $fillable = ['title', 'excert'];
+    protected $fillable = ['title', 'country', 'excert'];
     
     // public static function make($data)
     // {

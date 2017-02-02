@@ -12,6 +12,9 @@
 	
 	<p class="blog-post-meta">
 		
+		Country:
+		<a href="#">{{ App\Tools\Country::name($post->country) }}</a>
+		
 		Author:
 		<a href="#">{{ $post->user->name }}</a>
 		

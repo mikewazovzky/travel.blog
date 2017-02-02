@@ -3,10 +3,15 @@
 @section('blog-content')	
 	
 	<h1>{{ $post->title }}</h1>
-	Author: <strong>{{ $post->user->name }}</strong>
+	
+	Country:
+	<a href="#">{{ App\Tools\Country::name($post->country) }}</a>
+	
+	Author: <a href="#">{{ $post->user->name }}</a>
     
 	Created At:		
 	{{ $post->created_at->toFormattedDateString() }} 		
+	
 	Updated At:		
 	{{ $post->updated_at->toFormattedDateString() }} 	
 	<br>

@@ -6,6 +6,15 @@
 </div>
 
 <div class="form-group">
+	<label for="country">Country:</label>
+	<select name="country" id="country" class="form-control">
+		@foreach($countries as $country => $code)
+			<option value="{{ $code }}" {{ (isset($post) && ($post->country == $code)) ? 'selected' : '' }} >{{ $country }}</option>
+		@endforeach
+	</select>			
+</div>
+
+<div class="form-group">
 	<label for="excert">Excert:</label>
 	<textarea class="form-control" id="excert" name="excert" rows="7" required>{{ isset($post) ? $post->excert : '' }}</textarea>
 </div>
