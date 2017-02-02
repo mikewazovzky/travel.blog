@@ -3,6 +3,7 @@
 namespace App;
 use App\User;
 use App\Tag;
+use App\Comment;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,10 +11,10 @@ class Post extends Model
 {
     protected $fillable = ['title', 'excert'];
     
-    public static function make($data)
-    {
-        return static::create($data);        
-    }
+    // public static function make($data)
+    // {
+        // return static::create($data);        
+    // }
     
     public function user() 
     {
@@ -24,6 +25,8 @@ class Post extends Model
     {
         return $this->belongsToMany(Tag::class);
     }
+    
+
     
     public function scopeFilter($query, $filters) 
     {                 
@@ -43,6 +46,16 @@ class Post extends Model
             ->orderByRaw('min(created_at) desc')
             ->get()
             ->toArray();        
+    }
+    
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }    
+
+    public function addComment($body, $user_id) 
+    {
+        $this->comments()->create(['body' => $body, 'user_id' => $user_id]);
     }
     
     public function monthNumber($month)

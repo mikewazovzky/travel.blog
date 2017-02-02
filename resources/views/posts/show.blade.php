@@ -49,7 +49,13 @@
 	<div class="comments">
 		<h2>Comments</h2>
 		<ul class="list-group">
-
+        @foreach($post->comments as $comment)
+            <li class="list-group-item">
+                <strong>{{ $comment->created_at->diffForHumans() }}</strong>&nbsp
+                by [<strong>{{ $comment->user->name}}</strong>]:&nbsp
+                {{ $comment->body }}
+            </li>
+        @endforeach
 		</ul>
 	</div>
 	<br>
