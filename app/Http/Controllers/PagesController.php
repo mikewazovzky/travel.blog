@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\Mail\UserFeedback;
 
 class PagesController extends Controller
 {
@@ -15,4 +17,20 @@ class PagesController extends Controller
     {
         return view('pages.contacts');
     }
+    
+    public function feedback()
+	{
+		$this->validate(request(), [
+			'name' => 'required',
+			'email' => 'required|email',
+			'body' => 'required|max:255',
+		]);	
+        
+        $admin = 'mike.wazovzky@yandex.ru';
+        // $admin = 'alexander.nichiporenko@gmail.com';
+        
+        \Mail::to($admin)->send(new UserFeedback(request(['name', 'email', 'subj', 'body'])));
+        
+        return redirect('/contacts');
+	}
 }

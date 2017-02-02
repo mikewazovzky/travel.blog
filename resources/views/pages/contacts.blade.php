@@ -25,8 +25,10 @@
 	<div class="message">	
         <h3 class="text-center">Отправить сообщение</h3>
 	
-        <form class="form-horizontal" method="" action="">
+        <form class="form-horizontal" method="POST" action="/contacts">
 			 
+             {{ csrf_field() }} 
+             
 			<div class="form-group">
 				<label for="name"  class="control-label col-sm-2 col-sm-offset-2">Имя:</label>
 				<div class="col-sm-6">
@@ -37,7 +39,7 @@
 			<div class="form-group">
 				<label for="email" class="control-label col-sm-2 col-sm-offset-2">Электронная почта:</label>
 				<div class="col-sm-6">
-					<input type="email" class="form-control" placeholder="Введите адрес электронной почты"/>
+					<input type="email" name="email" class="form-control" placeholder="Введите адрес электронной почты"/>
 				</div>
 			</div>
 		
@@ -62,6 +64,9 @@
 			</div>
 
 		</form>
+        
+        @include('errors.list')
+        
 	</div>
 </div>
     
