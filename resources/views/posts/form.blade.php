@@ -13,8 +13,10 @@
 <!-- Tags Form Input -->
 <div class="form-group">
 	<label for="tags">Tags:</label>
-	<select class="form-control" id="tags" name="tags[]" value="2" multiple>
-
+	<select class="form-control" id="tags" name="tags[]" multiple>
+        @foreach($tags as $tagId => $tagName)
+            <option value="{{ $tagId }}" {{ (isset($post) && $post->tags->contains('id', $tagId))? 'selected' : '' }}>{{ $tagName }}</option>
+        @endforeach
 	</select>
 </div>	
 

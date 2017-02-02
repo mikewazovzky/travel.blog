@@ -13,17 +13,22 @@
 	<p class="blog-post-meta">
 		
 		Author:
-		
 		<a href="#">{{ $post->user->name }}</a>
 		
 		Created At:
-		
 		{{ $post->created_at->toFormattedDateString() }} 
 		
 		Updated At:
-		
 		{{ $post->updated_at->toFormattedDateString() }} 
-		
+		<br>
+        
+        @if(count($post->tags))
+            Tags: &nbsp
+            @foreach($post->tags as $tag)
+                <a href="/posts/tags/{{ $tag->name }}">{{ $tag->name }} </a>
+            @endforeach
+        @endif
+	<br>
 
 				
 	</p>

@@ -46,6 +46,8 @@ class PostsController extends Controller
         
         auth()->user()->publish($post);
         
+        $post->tags()->attach(request('tags'));
+        
         return redirect('/posts');
     }
 
@@ -81,6 +83,8 @@ class PostsController extends Controller
     public function update(Post $post)
     {
         $post->update(request(['title', 'excert']));
+        
+        $post->tags()->sync(request('tags'));
         
         return redirect('/posts');
     }

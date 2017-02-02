@@ -4,14 +4,19 @@
 	
 	<h1>{{ $post->title }}</h1>
 	Author: <strong>{{ $post->user->name }}</strong>
-	Created At:
-		
-	{{ $post->created_at->toFormattedDateString() }} 
-		
-	Updated At:
-		
-	{{ $post->updated_at->toFormattedDateString() }} 
-	
+    
+	Created At:		
+	{{ $post->created_at->toFormattedDateString() }} 		
+	Updated At:		
+	{{ $post->updated_at->toFormattedDateString() }} 	
+	<br>
+    
+    @if(count($post->tags))
+		Tags: &nbsp
+		@foreach($post->tags as $tag)
+			<a href="/posts/tags/{{ $tag->name }}">{{ $tag->name }} </a>
+		@endforeach
+	@endif
 	<br>
 	
 	{{-- Edit button --}}
