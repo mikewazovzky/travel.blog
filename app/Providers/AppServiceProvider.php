@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use App\Tag;
+use App\Post;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,8 +19,10 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
         
         view()->composer('layouts.blog.sidebar', function($view){
+            $archives = Post::archives();
             $tags = Tag::pluck('name');
-            $view->with(['tags' => $tags]);
+            
+            $view->with(['archives' => $archives, 'tags' => $tags]);
         });        
         
         view()->composer('posts.form', function($view){
