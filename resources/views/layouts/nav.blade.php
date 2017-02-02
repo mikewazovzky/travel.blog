@@ -17,9 +17,8 @@
 		<div class="collapse navbar-collapse" id="app-navbar-collapse">
 			<!-- Left Side Of Navbar -->
 			<ul class="nav navbar-nav">
-				&nbsp;					
-				<li><a href="#">About</a></li>
-				<li><a href="#">Contacts</a></li>
+				&nbsp;	
+                
 				<!-- Posts Project Navbar -->
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Posts <span class="caret"></span></a>
@@ -28,8 +27,16 @@
 						<li><a href="/posts/create">Create</a></li>
 					</ul>
                 </li>
-                
-				<!-- Users Project Navbar -->
+				
+				<li><a href="#">About</a></li>
+				<li><a href="#">Contacts</a></li>
+  
+			</ul>
+
+			<!-- Right Side Of Navbar -->
+			<ul class="nav navbar-nav navbar-right">
+            
+				<!-- Users Navbar -->
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Users <span class="caret"></span></a>
 					<ul class="dropdown-menu">
@@ -38,13 +45,8 @@
 						<li role="separator" class="divider"></li>
 						<li><a href="#">About User Administration </a></li>
 					</ul>
-                </li>                
-                
-                
-			</ul>
-
-			<!-- Right Side Of Navbar -->
-			<ul class="nav navbar-nav navbar-right">
+                </li>                  
+            
 				<!-- Authentication Links -->
 				@if (Auth::guest())
 					<li><a href="{{ url('/login') }}">Login</a></li>
@@ -69,9 +71,7 @@
 							</li>
 						</ul>
 					</li>
-					
-
-				@endif
+                @endif
 			</ul>
 		</div>
 	</div>
