@@ -11,4 +11,11 @@ class Tag extends Model
     {
         return $this->belongsToMany(Post::class);
     }
+    
+    
+    // Parameter passed to root is $tag->name instead of default $tag->id
+    public function getRouteKeyName()
+    {
+        return 'name';
+    }
 }

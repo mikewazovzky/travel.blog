@@ -28,9 +28,7 @@
                 <a href="/posts/tags/{{ $tag->name }}">{{ $tag->name }} </a>
             @endforeach
         @endif
-	<br>
-
-				
+	
 	</p>
 
 	<p>{{ $post->excert }}</p>
