@@ -14,7 +14,7 @@
 		
 		Author:
 		
-		<a href="#">$post->user->name</a>
+		<a href="#">{{ $post->user->name }}</a>
 		
 		Created At:
 		

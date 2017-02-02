@@ -43,7 +43,8 @@ class PostsController extends Controller
         ]);
         
         $post = new Post(request(['title', 'excert']));
-        $post->save();
+        
+        auth()->user()->publish($post);
         
         return redirect('/posts');
     }

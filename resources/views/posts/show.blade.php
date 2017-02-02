@@ -3,7 +3,7 @@
 @section('blog-content')	
 	
 	<h1>{{ $post->title }}</h1>
-	By user <strong> $post->user->name </strong>
+	Author: <strong>{{ $post->user->name }}</strong>
 	Created At:
 		
 	{{ $post->created_at->toFormattedDateString() }} 
