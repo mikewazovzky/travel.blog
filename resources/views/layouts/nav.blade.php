@@ -25,6 +25,7 @@
 					<ul class="dropdown-menu">
 						<li><a href="/posts">Index</a></li>
 						<li><a href="/posts/create">Create</a></li>
+						<li><a href="/tags">Create Tags</a></li>
 					</ul>
                 </li>
 				

@@ -6,7 +6,7 @@
 
 		<h1>Users</h1>
 		<hr/>
-		<table class="table table-striped">
+		<table class="table table-striped table-condensed">
 			<tr>
 				<th>Имя пользователя</th>
 				<th>Тип</th> 
