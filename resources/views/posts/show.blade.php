@@ -55,9 +55,20 @@
 	
 	<div class="post-content">
 		
-		<img class="img-responsive" src="/uploads/images/{{ $post->featured ?? 'messa.jpg'}}"/>
+		@if($post->type == 'html' && $post->page)
+            
+            {!! $post->pageContent() !!}            
+
+            
+        @elseif($post->type == 'blade' && $post->page)
+        
+            @include('posts.locations.' . $post->page)
+        
+        @else
+        
+            <img class="img-responsive" src="/uploads/images/{{ $post->featured ?? 'messa.jpg'}}"/>
 		
-		<p>{{ $post->excert}} </p>	
+		@endif
 	
 	</div>
 	

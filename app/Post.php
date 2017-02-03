@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     const PATH_TO_IMAGES = 'uploads/images/';
+    const PATH_TO_PAGES = 'uploads/pages/';
 	
 	protected $fillable = ['title', 'country', 'type', 'excert'];
     
@@ -75,30 +76,56 @@ class Post extends Model
     public function fillData($request)
     {
 		$this->fill($request->only(['title', 'country', 'type', 'excert']));
-		
-		if(!$request->hasFile('featured')) {
-            return $this;
+        
+        if($file = $request->file('featured')) {
+            $this->loadFeatured($file);           
         }
         
-        // else load Featured image
+        if($file = $request->file('page')) {
+            $this->loadPage($file);           
+        }       
+        
+        return $this;        
+    }   
+    
+    public function loadPage($file)
+    {            
+        $filename = $this->filename($file);
+        
+        if(!$file->move(self::PATH_TO_PAGES, $filename)) {
+            return false;
+        }  
+        
+        if($this->page) {
+            $this->deletePage();
+        }  
+        
+        $this->page = $filename;        
+    }   
+    
+    public function loadFeatured($file)
+    {            
+        $filename = $this->filename($file);
+        
+        if(!$file->move(self::PATH_TO_IMAGES, $filename)) {
+            return false;
+        }  
         
         if($this->featured) {
             $this->deleteFeatured();
-        }
-            
-        $file = $request->file('featured');
+        }  
         
-        $name = time() . '-' . $this->slug();
-		
-        $extension = $file->getClientOriginalExtension();
-        $filename = $name . '.' . $extension;  
-        
-        $file->move(self::PATH_TO_IMAGES, $filename);          
-            
-        $this->featured = $filename; 
-        
-        return $this;        
+        $this->featured = $filename;        
     }    
+    
+    public function filename($file)
+    {
+        $name = time() . '-' . $this->slug();
+		$extension = $file->getClientOriginalExtension();
+        
+        return $name . '.' . $extension;  
+    }
+    
 
 	/**
      * Override Model::delete() method, delete image file
@@ -107,11 +134,20 @@ class Post extends Model
      */
 	public function delete() 
 	{
-		$this->deleteFeatured();
+		if(!parent::delete()) {
+            return false;
+        }            
+        
+        if($this->featured) {
+            $this->deleteFeatured();
+        }
+        
+        if($this->featured) {
+            $this->deletePage();
+        }
 				
-		return parent::delete();		
+		return true;
 	}	
-	
 	
 	protected function deleteFeatured()
     {
@@ -121,11 +157,37 @@ class Post extends Model
 		
         $imageFile = self::PATH_TO_IMAGES . $this->featured;
 		return unlink($imageFile);	
+    }	
+    
+	protected function deletePage()
+    {
+        if(!$this->page) {
+            return true;
+        }
+		
+        $pageFile = self::PATH_TO_PAGES . $this->page;
+		return unlink($pageFile);	
     }
 	
 	public function slug()
 	{
 		return str_replace(' ', '-', str_replace('.', '', $this->title));
+	}
+    
+    
+    // !!!!!!!!!!! This approach bear significant security issues !!!!!!!!!!!!!!
+    /**
+     * Read location [html/text] page as a string
+     *
+     * @return string
+     */
+	public function pageContent()
+	{
+		if ($this->page) {
+            return file_get_contents(self::PATH_TO_PAGES . $this->page);
+        }
+        
+        return '';
 	}
     
 }

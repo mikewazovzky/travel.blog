@@ -1,9 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Post;
+
+
 
 use Illuminate\Http\Request;
+use App\Post;
+use App\Tools\ImageCollection;
+
 
 class PostsController extends Controller
 {
@@ -44,8 +48,6 @@ class PostsController extends Controller
      */
     public function store()
     {
-        
-		
 		$this->validate(request(), [
             'title' => 'required|max:255',
             'excert' => 'required',
@@ -71,7 +73,13 @@ class PostsController extends Controller
      */
     public function show(Post $post)
     {
-        return view('posts.show', compact('post'));
+		$images = [];
+        
+        if ($post->type == 'blade') {			
+			$images = (new ImageCollection())->get($post->page);
+        }			
+			
+        return view('posts.show', compact('post', 'images'));
     }
 
     /**
