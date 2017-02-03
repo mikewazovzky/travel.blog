@@ -26,6 +26,8 @@ Route::get('/tags', function() {
 	\App\Tag::create(['name' => 'PHP']);
 	\App\Tag::create(['name' => 'Laravel']);
 	
+	factory(App\Post::class, 12)->create();
+	
 	return redirect('/posts');
 });
 

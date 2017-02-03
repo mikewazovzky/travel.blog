@@ -5,7 +5,7 @@
 	<h1>Publish a Post</h1>
     <hr>
 
-    <form method="POST" action="/posts">
+    <form method="POST" action="/posts" enctype="multipart/form-data" class="form-horizontal">
         
 		@include('posts.form')
 		

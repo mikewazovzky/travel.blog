@@ -52,9 +52,9 @@ class PostsController extends Controller
 			'country' => 'required',
         ]);
         
-		$post = new Post(request(['title', 'country', 'excert']));
-        
-        auth()->user()->publish($post);
+		$post = (new Post)->fillData(request());
+		
+		auth()->user()->publish($post);
         
         $post->tags()->attach(request('tags'));
         
@@ -94,12 +94,17 @@ class PostsController extends Controller
      */
     public function update(Post $post)
     {
-        
+		$this->validate(request(), [
+            'title' => 'required|max:255',
+            'excert' => 'required',
+			'country' => 'required',
+			'featured' => 'sometimes|mimes:jpeg,jpg|max:500'
+        ]);        
 		
-		$post->update(request(['title', 'country', 'excert']));
-       
-        $post->tags()->sync((array)request('tags'));
-        
+		$post->fillData(request())->save();
+
+		$post->tags()->sync((array)request('tags'));
+		
         session()->flash('message', 'Your post has been updated.');
         
         return redirect('/posts');

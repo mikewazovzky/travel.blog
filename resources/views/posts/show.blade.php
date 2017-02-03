@@ -16,6 +16,9 @@
 	{{ $post->updated_at->toFormattedDateString() }} 	
 	<br>
     
+	Type: &nbsp
+	<a href="#">{{ $post->type }}</a>
+	
     @if(count($post->tags))
 		Tags: &nbsp
 		@foreach($post->tags as $tag)
@@ -37,6 +40,7 @@
 	
 	
 	{{-- Delete button --}}
+	
 	<form method="POST" action="/posts/{{ $post->id }}" style="display: inline;">
         
 		{{ method_field('DELETE') }}
@@ -48,7 +52,15 @@
 	</form>
 	
     <hr>
-	<p>{{ $post->excert}} </p>	
+	
+	<div class="post-content">
+		
+		<img class="img-responsive" src="/uploads/images/{{ $post->featured ?? 'messa.jpg'}}"/>
+		
+		<p>{{ $post->excert}} </p>	
+	
+	</div>
+	
 	<hr>
 	
 	<div class="comments">

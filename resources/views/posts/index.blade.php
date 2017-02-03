@@ -4,6 +4,8 @@
 	
 	@foreach($posts as $post)
 
+		<hr>
+		
 		@include('posts.post')
 
 	@endforeach
