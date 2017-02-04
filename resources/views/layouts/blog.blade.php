@@ -4,10 +4,9 @@
 @section('content')
 
     <div class="container">	
+	
+			@yield('blog-header')	
         
-        @include('layouts.blog.header')
-        
-        <div class=""row>
         
             <div class="col-sm-9 blog-main">
 

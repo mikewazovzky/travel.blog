@@ -1,3 +1,7 @@
+@extends('posts.post')
+
+@section('post-content')
+
 <img src="{{ $images['004']['src'] }}" align="left" width="300px" style="margin: 0 10px 0 0;"/>
 
 <p>	Долина монументов - полное название парка <strong>Monument Valley Navajo Tribal Park</strong>, находится по пути из города 
@@ -77,7 +81,7 @@
 			</div> <!-- Modal Header -->
 			
 			<div class="modal-body">
-				<img class="img-responsive" src="/media/arches.jpg" style="padding-bottom: 10px; "/>
+				<img class="img-responsive" src="/images/arches.jpg" style="padding-bottom: 10px; "/>
 				<p>	На относительно небольшой территории парка Вы найдете замечательную 
 					коллекцию необычных природных образований - каменных арок ...
 				</p>
@@ -89,4 +93,17 @@
 	</div> <!-- Modal Dialog -->
 </div> <!-- Modal -->
 
+@stop
+
+@section('footer.scripts')
+	<script>
+		$(function() {
+			$('.carousel').carousel({
+				interval: 3000,         // sliding intervals
+				wrap: false,			// continue sliding after reaching last (or first) image
+				keyboard: false
+			});
+		});
+	</script>
+@stop
 

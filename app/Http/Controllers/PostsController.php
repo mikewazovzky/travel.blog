@@ -73,13 +73,14 @@ class PostsController extends Controller
      */
     public function show(Post $post)
     {
-		$images = [];
-        
-        if ($post->type == 'blade') {			
-			$images = (new ImageCollection())->get($post->page);
-        }			
-			
-        return view('posts.show', compact('post', 'images'));
+		
+		if ($post->type == 'html') {
+			return view('posts.show', compact('post'));
+		}
+		
+		$images = (new ImageCollection())->get($post->page);
+        			
+        return view('posts.locations' . '.' . $post->page, compact('post', 'images'));
     }
 
     /**

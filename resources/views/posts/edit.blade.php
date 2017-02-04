@@ -5,7 +5,7 @@
 	<h1>Edit Post</h1>
     <hr>
 
-    <form method="POST" action="/posts/{{ $post->id }}" enctype="multipart/form-data" class="form-horizontal">
+    <form method="POST" action="/posts/{{ $post->slug }}" enctype="multipart/form-data" class="form-horizontal">
         
 		{{ method_field('PATCH') }}
 		
