@@ -1,7 +1,7 @@
-@extends('locations.location')
-@section('location')
+@extends('posts.post')
+@section('post-content')
 
-<img src="/media/page.jpg" align="left" width="300px" style="margin: 0 10px 0 0;"/>
+<img src="/images/page.jpg" align="left" width="300px" style="margin: 0 10px 0 0;"/>
 
 <h1>Пэйдж (Page, AZ)</h1>
 <p>	Благодаря своему удобному расположению, город Пэйдж (Page AZ) является центральной перевалочной 

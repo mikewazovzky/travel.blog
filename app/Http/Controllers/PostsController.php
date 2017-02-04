@@ -55,9 +55,7 @@ class PostsController extends Controller
 		
 		auth()->user()->publish($post);
 		
-		var_dump('----------------------------------- POST PUBLISHED ------------------------------------------');
-        
-        $post->tags()->attach(request('tags'));
+		$post->tags()->attach(request('tags'));
         
         session()->flash('message', 'Your post has been created.');
         
@@ -67,7 +65,7 @@ class PostsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Post $post
      * @return \Illuminate\Http\Response
      */
     public function show(Post $post)
@@ -85,7 +83,7 @@ class PostsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Post $post
      * @return \Illuminate\Http\Response
      */
     public function edit(Post $post)
@@ -97,7 +95,7 @@ class PostsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Post $post
      * @return \Illuminate\Http\Response
      */
     public function update(Post $post)
@@ -121,7 +119,7 @@ class PostsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Post $post
      * @return \Illuminate\Http\Response
      */
     public function destroy(Post $post)

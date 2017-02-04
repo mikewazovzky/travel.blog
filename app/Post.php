@@ -193,7 +193,7 @@ class Post extends Model
     {            
         $filename = $this->filename($file);
         
-        if(!$file->move(self::PATH_TO_IMAGES, $filename)) {
+		if(!$file->move(self::PATH_TO_IMAGES, $filename)) {
             return false;
         }  
         
@@ -230,11 +230,13 @@ class Post extends Model
 	{
 		if(!parent::delete()) {
             return false;
-        }            
+        }     
+		
         if($this->featured) {
             $this->deleteFeatured();
         }
-        if($this->oage) {
+		
+        if($this->page) {
             $this->deletePage();
         }
 		return true;

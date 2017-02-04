@@ -1,5 +1,6 @@
 {{ csrf_field() }}
 
+<!-- Post Title input -->
 <div class="form-group">
 	<label for="title" class="col-sm-1 control-label">Title:</label>
 	<div class="col-sm-11">
@@ -7,7 +8,7 @@
 	</div>
 </div>
 
-
+<!-- Post Country input (select) -->
 <div class="row">
 <div class="col-sm-6">
 <div class="form-group">
@@ -22,12 +23,13 @@
 </div>
 </div>
 
+<!-- Post Type input (select) -->
 <div class="col-sm-6">
 <div class="form-group">
 	<label for="type" class="col-sm-2 control-label">Type:</label>
 	<div class="col-sm-10">	
 		<select name="type" id="type" class="form-control">
-			@foreach(['blade', 'html'] as $type)
+			@foreach(['html', 'blade'] as $type)
 				<option value="{{ $type }}" {{ (isset($post) && ($post->type == $type)) ? 'selected' : '' }} >{{ $type }}</option>
 			@endforeach
 		</select>		
@@ -36,7 +38,7 @@
 </div>
 </div>
 
-<!-- Tags Form Input -->
+<!-- Post Tags input (select)-->
 <div class="form-group">
 	<label for="tags" class="col-sm-1 control-label">Tags:</label>
 	<div class="col-sm-11">
@@ -48,7 +50,7 @@
 	</div>
 </div>	
 
-
+<!-- Post Excert input (textarea) Post Excert -->
 <div class="form-group">
 	<label for="excert" class="col-sm-1 control-label">Excert:</label>
 	<div class="col-sm-11">	
@@ -56,6 +58,8 @@
 	</div>	
 </div>
 
+<!-- Post Featured Image -->
+<!-- Post Featured Image display image (default image if none) ) -->
 <div class="form-group">
 	<label for="featured" class="col-sm-1 control-label">Featured Image:</label>
 	<div class="col-sm-5">	
@@ -66,6 +70,13 @@
 	</div>		
 </div>
 
+<!-- Post Featured Image input (select file) -->
+<div class="form-group">
+	<input type="file" name="featured" class="form-control" id="featuredFile">
+</div>	
+
+<!-- Post User Page -->
+<!-- Post User Page button -->
 <div class="form-group">
 	<label for="featured" class="col-sm-1 control-label">Page:</label>
 	<div class="col-sm-5">	
@@ -76,20 +87,18 @@
 	</div>		
 </div>
 
-<div class="form-group">
-	<input type="file" name="featured" class="form-control" id="featuredFile">
-</div>	
-
+<!-- Post User Page input (select file) -->
 <div class="form-group">
 	<input type="file" name="page" class="form-control" id="pageFile">
 </div>
 
+<!-- form submit button -->
 <div class="form-group">
 	<button type="submit" class="form-control btn-primary">Publish</button>
 </div>	
 
 @section('footer.scripts')
-    	
+    <!-- Post Tags Select2 Multiselection input -->	
     <script type="text/javascript">
 		$('#tags').select2({
 			placeholder: "Choose a tag"			
