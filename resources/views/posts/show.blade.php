@@ -29,7 +29,7 @@
 	
 	{{-- Edit button --}}
 
-	<form method="GET" action="/posts/{{ $post->id }}/edit" style="display: inline;">
+	<form method="GET" action="/posts/{{ $post->slug }}/edit" style="display: inline;">
 		
 		{{ csrf_field() }}
 		
@@ -41,7 +41,7 @@
 	
 	{{-- Delete button --}}
 	
-	<form method="POST" action="/posts/{{ $post->id }}" style="display: inline;">
+	<form method="POST" action="/posts/{{ $post->slug }}" style="display: inline;">
         
 		{{ method_field('DELETE') }}
 		
@@ -92,7 +92,7 @@
     @if(auth()->check())
         <div class="add-comment" >
 
-                <form method="POST" action="/posts/{{ $post->id }}/comments">
+                <form method="POST" action="/posts/{{ $post->slug }}/comments">
                 
                     {{ csrf_field() }}
                     

@@ -16,6 +16,15 @@ Route::post('/contacts', 'PagesController@feedback');
 Route::resource('/users', 'UsersController');
 
 Route::resource('/posts', 'PostsController');
+//Route::get('/posts', 'PostsController@index');
+//Route::get('/posts/{post}', 'PostsController@show');
+//Route::get('/posts/{post}/edit', 'PostsController@edit');
+
+
+
+
+
+
 Route::get('/posts/tags/{tag}', 'TagsController@index');
 Route::post('/posts/{post}/comments', 'CommentsController@store');
 

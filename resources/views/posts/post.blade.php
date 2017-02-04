@@ -7,7 +7,7 @@
 	<div class="col-sm-8">
 	
 		<h3 class="blog-post-title">		
-			<a href="/posts/{{ $post->id}}">			
+			<a href="/posts/{{ $post->slug}}">			
 				{{ $post->title }}			
 			</a>		
 		</h3>

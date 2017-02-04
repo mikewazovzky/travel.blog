@@ -19,7 +19,8 @@ class CreatePostsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             
-			$table->string('title')->unique(); 
+			$table->string('title'); 
+			$table->string('slug')->unique();
 			$table->string('country', 40);
 			$table->enum('type', ['blade', 'html'])->default('html');
             $table->text('excert');

@@ -12,12 +12,19 @@ class Post extends Model
     const PATH_TO_IMAGES = 'uploads/images/';
     const PATH_TO_PAGES = 'uploads/pages/';
 	
-	protected $fillable = ['title', 'country', 'type', 'excert'];
-    
-    // public static function make($data)
-    // {
-        // return static::create($data);        
-    // }
+	protected $fillable = ['title', 'slug', 'country', 'type', 'excert'];
+  
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+  
+	// mutator, creates slug
+	public function setTitleAttribute($value)
+    {
+        $this->attributes['title'] = $value;
+		$this->attributes['slug'] = $this->slug($value);		
+    }
     
     public function user() 
     {
@@ -28,8 +35,6 @@ class Post extends Model
     {
         return $this->belongsToMany(Tag::class);
     }
-    
-
     
     public function scopeFilter($query, $filters) 
     {                 
@@ -77,7 +82,7 @@ class Post extends Model
     {
 		$this->fill($request->only(['title', 'country', 'type', 'excert']));
         
-        if($file = $request->file('featured')) {
+		if($file = $request->file('featured')) {
             $this->loadFeatured($file);           
         }
         
