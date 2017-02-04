@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-
-
 use Illuminate\Http\Request;
 use App\Post;
 use App\Tools\ImageCollection;
-
 
 class PostsController extends Controller
 {
@@ -57,6 +54,8 @@ class PostsController extends Controller
 		$post = (new Post)->fillData(request());
 		
 		auth()->user()->publish($post);
+		
+		var_dump('----------------------------------- POST PUBLISHED ------------------------------------------');
         
         $post->tags()->attach(request('tags'));
         
