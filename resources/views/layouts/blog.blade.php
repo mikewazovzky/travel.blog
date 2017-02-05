@@ -2,9 +2,9 @@
 
 @section('content')
 
+	@include('layouts.blog.header')
+
     <div class="container">	
-	
-			@yield('blog-header')
 	
 		<div class="col-sm-9 blog-main">
 

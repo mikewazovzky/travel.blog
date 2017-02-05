@@ -172,7 +172,7 @@ class Post extends Model
     {            
         $filename = $this->filename($file);
         
-        if(!$file->move(self::PATH_TO_PAGES, $filename)) {
+        if(!$file->move(self::PATH_TO_PAGES, iconv("utf-8","cp1251",  $filename))) {
             return false;
         }          
         if($this->page) {
@@ -193,7 +193,7 @@ class Post extends Model
     {            
         $filename = $this->filename($file);
         
-		if(!$file->move(self::PATH_TO_IMAGES, $filename)) {
+		if(!$file->move(self::PATH_TO_IMAGES, iconv("utf-8","cp1251",  $filename))) {
             return false;
         }  
         
@@ -253,7 +253,7 @@ class Post extends Model
             return true;
         }
 		
-        $imageFile = self::PATH_TO_IMAGES . $this->featured;
+        $imageFile = self::PATH_TO_IMAGES . iconv("utf-8","cp1251", $this->featured);
 		return unlink($imageFile);	
     }	
 	
@@ -269,7 +269,7 @@ class Post extends Model
             return true;
         }
 		
-        $pageFile = self::PATH_TO_PAGES . $this->page;
+        $pageFile = self::PATH_TO_PAGES . iconv("utf-8","cp1251", $this->page);
 		return unlink($pageFile);	
     }
 	
@@ -292,7 +292,7 @@ class Post extends Model
 	public function pageContent()
 	{
 		if ($this->page) {
-            return file_get_contents(self::PATH_TO_PAGES . $this->page);
+            return file_get_contents(self::PATH_TO_PAGES . iconv("utf-8","cp1251", $this->page));
         }
         
         return '';

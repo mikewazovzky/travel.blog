@@ -9,10 +9,10 @@
 @section('blog-content')	
 	
 	@foreach($posts as $post)
-
-		<hr>
 		
 		@include('posts.post-excert')
+		
+		<hr>
 
 	@endforeach
 
