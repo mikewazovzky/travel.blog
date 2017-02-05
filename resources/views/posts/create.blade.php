@@ -13,4 +13,4 @@
 	  
 	@include('errors.list')
 	
-@endsection
+@stop

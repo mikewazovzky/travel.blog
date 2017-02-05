@@ -7,13 +7,16 @@
 
 require('./bootstrap');
 require('./components/users');
+require('./components/posts');
 
-import { setEventHandlers } from './components/users';
 
+import { setEventHandlers as userEventHandlers} from './components/users';
+import { setEventHandlers as postsEventHandlers} from './components/posts';
 
 $(document).ready(function() {
-	setEventHandlers(); 
-
+	userEventHandlers(); 
+	postsEventHandlers();
+	
     $('#flash-message').delay(2000).fadeOut(1000); 
    
 });

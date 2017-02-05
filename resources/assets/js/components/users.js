@@ -1,6 +1,6 @@
 /********************** Module User: User Page Script ********************/
 
-import { handleFileSelect } from './service';
+import { handleImageSelect } from './service';
 
 // hanle User Form Submit 
 function handleUserFormSubmit(event) {
@@ -34,7 +34,7 @@ export function setEventHandlers() {
 	
 	// Change Image to Selected by User upon Image Selection
 	$("#userFile").change(function(evt) {
-		handleFileSelect(evt, "#userImage", "#userInfo");
+		handleImageSelect(evt, "#userImage", "#userInfo");
 	});		
 	
 	// click the Image to simulate Select File click on File Input form
