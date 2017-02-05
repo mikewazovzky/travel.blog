@@ -30,9 +30,21 @@ Route::get('/tags', function() {
 	return redirect('/posts');
 });
 
-Route::get('/test', function() {
-	
-	//setlocale(LC_ALL, 'ru_RU');
-	return setlocale(LC_ALL, 0);
+Route::get('/test1', function() {
+
+    $img = \Image::make('images/messa.jpg')->resize(200, 200);
+
+    return $img->response('jpg');
+
 });
 
+
+Route::get('/test', function() {
+
+    $post = Post::where('slug', 'Парк-Гигантских-Деревьев')->first();
+
+	$str = $post->excert;
+	
+	return substr($str, 0, 1000);
+
+});

@@ -37,8 +37,8 @@
 		
 		</p>
 
-		<p>{{ $post->excert }}</p>
-	
+		<p>{{ mb_substr($post->excert, 0, 200) . ' [...]' }}</p>
+		
 	</div>
 
 </div><!-- /.blog-post -->
