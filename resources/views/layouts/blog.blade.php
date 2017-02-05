@@ -6,13 +6,13 @@
 
     <div class="container">	
 	
-		<div class="col-sm-9 blog-main">
+		<div class="col-lg-9 blog-main">
 
 			@yield('blog-content')
 		
 		</div>
 		
-		<div class="col-sm-3 blog-sidebar">
+		<div class="col-lg-3 blog-sidebar hidden-md">
 
 			@include('layouts.blog.sidebar')
 		
