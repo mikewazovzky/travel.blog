@@ -1,5 +1,6 @@
-@extends('locations.location')
-@section('location')
+@extends('posts.post')
+
+@section('post-content')
 
 <img class="img-responsive" style="float: left; max-height: 200px; margin-right: 10px;" src="{{ $images['018']['src'] }}">
 <h1>Остров в Небесах</h1>

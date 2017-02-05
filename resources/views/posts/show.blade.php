@@ -1,7 +1,6 @@
 @extends('posts.post')
 
 @section('post-content')	
-
 		
 		@if($post->type == 'html' && $post->page)
             

@@ -12,9 +12,11 @@
 
 			<!-- Branding Image -->
 			<a class="navbar-brand" href="{{ url('/') }}">TravelBlog</a>
+			
 		</div>
 
 		<div class="collapse navbar-collapse" id="app-navbar-collapse">
+		
 			<!-- Left Side Of Navbar -->
 			<ul class="nav navbar-nav">
 				&nbsp;	
@@ -27,8 +29,7 @@
 						<li><a href="/posts/create">Create</a></li>
 						<li><a href="/tags">Setup Test Environment</a></li>
 					</ul>
-                </li>
-				
+                </li>				
 				<li><a href="/about">About</a></li>
 				<li><a href="/contacts">Contacts</a></li>
   

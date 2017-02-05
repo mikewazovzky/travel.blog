@@ -1,7 +1,9 @@
-@extends('locations.location')
-@section('location')
+@extends('posts.post')
+
+@section('post-content')
+
 <h1>{{ $location->title }}</h1>
-<img class="" src="/media/{{ $location->image ? : 'canyon.jpg' }}" style="width: 300px; float:right; margin: 0 10px;">
+<img class="" src="/images/canyon.jpg" style="width: 300px; float:right; margin: 0 10px;">
 <div class="">
 {!! $contents !!}
 </div>

@@ -1,3 +1,7 @@
+@extends('posts.post')
+
+@section('post-content')
+
 <img class="img-responsive" style="float: left; max-height: 200px; margin-right: 10px;" src="{{ $images['001']['src'] }}"/>
 
 <h1>Арки - Arches National Park, Uta</h1>
@@ -189,4 +193,4 @@
 <p>Официальный <a href="https://www.nps.gov/arch/index.htm">сайт</a> парка.
 <p><a href="http://forum.awd.ru/viewtopic.php?t=180622">Фотогид</a> и фотосоветы от Alex 55 на форуме Винского. 
 
-
+@stop

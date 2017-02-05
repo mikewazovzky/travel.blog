@@ -1,8 +1,9 @@
-@extends('locations.location')
-@section('location')
+@extends('posts.post')
+
+@section('post-content')
 
 <!-------------------------- Content Area ---------------------------------------------->	
-<h1>Парк гигантских деревьев – Sequoia National Park</h1>
+<h1>Парк гигантских деревьев</h1>
 
 <h2>Общая информация</h2> 
 

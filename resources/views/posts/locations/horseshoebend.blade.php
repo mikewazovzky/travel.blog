@@ -1,5 +1,6 @@
-@extends('locations.location')
-@section('location')
+@extends('posts.post')
+
+@section('post-content')
 
 <img src="/media/page.jpg" align="left" width="300px" style="margin: 0 10px 0 0;"/>
 
@@ -18,4 +19,5 @@
 <a href="http://imgur.com/AyokASv"><img src="http://i.imgur.com/AyokASvh.jpg" title="source: imgur.com" /></a>
 <a href="http://imgur.com/U0samgz"><img src="http://i.imgur.com/U0samgzh.jpg" title="source: imgur.com" /></a>
 <a href="http://imgur.com/AgVucng"><img src="http://i.imgur.com/AgVucngh.jpg" title="source: imgur.com" /></a>
+
 @stop

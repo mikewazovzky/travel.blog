@@ -30,3 +30,9 @@ Route::get('/tags', function() {
 	return redirect('/posts');
 });
 
+Route::get('/test', function() {
+	
+	//setlocale(LC_ALL, 'ru_RU');
+	return setlocale(LC_ALL, 0);
+});
+

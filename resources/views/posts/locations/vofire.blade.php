@@ -1,5 +1,6 @@
-@extends('locations.location')
-@section('location')
+@extends('posts.post')
+
+@section('post-content')
 
 <img class="img-responsive center-block" style="float: left; max-height: 200px; margin-right: 10px;" src="{{ $images['001']['src'] }}"/>
 

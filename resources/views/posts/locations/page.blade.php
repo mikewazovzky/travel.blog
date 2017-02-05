@@ -1,4 +1,5 @@
 @extends('posts.post')
+
 @section('post-content')
 
 <img src="/images/page.jpg" align="left" width="300px" style="margin: 0 10px 0 0;"/>
