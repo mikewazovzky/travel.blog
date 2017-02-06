@@ -309,4 +309,21 @@ class Post extends Model
 			->fit($width, $height)
 			->save(self::PATH_TO_IMAGES . iconv("utf-8","cp1251", $this->thumbnailName()));
 	}	
+	
+	/**
+	 * Defines color for  the Location plate on a main page
+	 *
+	 * @return string 
+	 */	
+	public static function color() {	
+		static $colors = ['#ff6f00', '#ff9500', '#ffc108', '#27a15e', '#51de38', '#c3d932', '#7a79c6', '#7d7bff', '#6d6aff'];
+		static $index = 0;	
+		
+		$color = $colors[$index];
+		$index++;
+		if ($index >= count($colors)) {
+			$index = 0;
+		}
+		return $color;
+	}
 }

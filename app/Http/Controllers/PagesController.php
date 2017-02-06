@@ -8,11 +8,18 @@ use App\Mail\UserFeedback;
 
 class PagesController extends Controller
 {
+    public function main()
+    {
+        $posts = \App\Post::inRandomOrder()->limit(8)->get();
+		
+		return view('pages.main', compact('posts'));
+    }
+	
     public function about()
     {
         return view('pages.about');
     }
-
+	
     public function contacts()
     {
         return view('pages.contacts');

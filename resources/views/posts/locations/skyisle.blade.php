@@ -3,8 +3,8 @@
 @section('post-content')
 
 <img class="img-responsive" style="float: left; max-height: 200px; margin-right: 10px;" src="{{ $images['018']['src'] }}">
-<h1>Остров в Небесах</h1>
-<h3>Canyonlands National Park and Dead Horse Point State Park, Uta</h3>
+<h2>Каньонлэндс и Голова Мертвой Лошади
+	(Canyonlands National Park and Dead Horse Point State Park, Uta)</h2>
 <p>	В отличие от остальных парков, которые я планировал посетить во время поездки, про Остров в Небесах (он Каньонлэндс) я
     никогда раньше не слышал. Я наткнулся на информацию о парке планируя маршрут из Парка Арки в Каньон Брайс и решил заехать. 
     Особенно меня заинтриговало название  Dead Horse Point, но до него я к сожалению не доехал.</p>

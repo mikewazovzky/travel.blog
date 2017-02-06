@@ -63,7 +63,7 @@
 <div class="form-group">
 	<label for="featured" class="col-sm-1 control-label">Featured Image:</label>
 	<div class="col-sm-5">	
-		<img id="featuredImage" class="img-responsive" src="/uploads/images/{{ isset($post) && $post->featured ? $post->featured : 'messa.jpg'}}"/>
+		<img id="featuredImage" class="img-responsive" src="/uploads/images/{{ isset($post) && $post->featured ? $post->featured : 'default.jpg'}}"/>
 	</div>
 	<div class="col-sm-6">	
 		<p>Selected Image: <strong><span id="featuredInfo">{{ isset($post) && $post->featured ? $post->featured : 'None'}}</span></strong></p>

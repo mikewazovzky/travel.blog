@@ -1,10 +1,10 @@
 <div class="row blog-post">
 
-	<div class="col-sm-4">
+	<div class="col-sm-4 col-md-5">
 		<img class="img-responsive" src="{{ $post->thumbnail ? '/uploads/images/' . $post->thumbnail : ''}}"/>
 	</div>
 	
-	<div class="col-sm-8">
+	<div class="col-sm-8 col-md-7">
 	
 		<h3 class="blog-post-title">		
 			<a href="/posts/{{ $post->slug}}">			

@@ -2,7 +2,7 @@
 
 @section('content')
 
-	@include('layouts.blog.header')
+	@yield('blog-header')
 
     <div class="container">	
 	

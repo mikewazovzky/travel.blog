@@ -8,7 +8,7 @@
         
         @else
         
-            <img class="img-responsive" src="/uploads/images/{{ $post->featured ?? 'messa.jpg'}}"/>
+            <img class="img-responsive" src="/uploads/images/{{ $post->featured ?? 'default.jpg'}}"/>
 			
 			<p>{{ $post->excert }}</p>
 		
