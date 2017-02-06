@@ -46,7 +46,7 @@ class PostsController extends Controller
     public function store()
     {
 		$this->validate(request(), [
-            'title' => 'required|max:255',
+            'title' => 'required|max:255|unique:posts,title',
             'excert' => 'required',
 			'country' => 'required',
         ]);
@@ -58,6 +58,8 @@ class PostsController extends Controller
 		$post->tags()->attach(request('tags'));
         
         session()->flash('message', 'Your post has been created.');
+		
+		event(new \App\Events\PostPublished($post));
         
         return redirect('/posts');
     }
@@ -101,7 +103,7 @@ class PostsController extends Controller
     public function update(Post $post)
     {
 		$this->validate(request(), [
-            'title' => 'required|max:255',
+            'title' => 'required|max:255|unique:posts,title',
             'excert' => 'required',
 			'country' => 'required',
 			'featured' => 'sometimes|mimes:jpeg,jpg|max:500'
