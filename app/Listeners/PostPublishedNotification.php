@@ -2,12 +2,12 @@
 
 namespace App\Listeners;
 
-use App\Mail\NewPostNotification;
+use App\Mail\NewPostCreated;
 
 class PostPublishedNotification extends AdminNotification
 {
     public function getMail($event)
 	{
-		return new NewPostNotification($event->post);
+		return new NewPostCreated($event->post);
 	}
 }

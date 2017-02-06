@@ -8,7 +8,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use App\User;
 
-class NewUserNotification extends Mailable
+class NewUserRegistered extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -32,6 +32,6 @@ class NewUserNotification extends Mailable
     public function build()
     {
 		return $this->subject('New user registered')
-                    ->view('emails.newuserregistered');
+                    ->markdown('emails.new-user-registered');
     }
 }

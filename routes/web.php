@@ -42,8 +42,9 @@ Route::get('/test1', function() {
 });
 
 
-Route::get('/test', function() {
+Route::get('/test/{post}', function(Post $post) {
 
-
+    // $post = Post::where('slug', 'Testing-Events-&-Mail-#2')->first();
+    return $post;
 
 });

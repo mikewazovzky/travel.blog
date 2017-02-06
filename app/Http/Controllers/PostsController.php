@@ -72,7 +72,6 @@ class PostsController extends Controller
      */
     public function show(Post $post)
     {
-		
 		if ($post->type == 'html') {
 			return view('posts.show', compact('post'));
 		}

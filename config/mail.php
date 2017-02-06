@@ -100,7 +100,8 @@ return [
     */
 
     'markdown' => [
-        'theme' => 'default',
+        //'theme' => 'default',
+        'theme' => 'travelblog',
 
         'paths' => [
             resource_path('views/vendor/mail'),

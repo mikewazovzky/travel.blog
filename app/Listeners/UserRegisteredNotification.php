@@ -2,12 +2,12 @@
 
 namespace App\Listeners;
 
-use App\Mail\NewUserNotification;
+use App\Mail\NewUserRegistered;
 
 class UserRegisteredNotification extends AdminNotification
 {
     public function getMail($event)
 	{
-		return new NewUserNotification($event->user);
+		return new NewUserRegistered($event->user);
 	}
 }
