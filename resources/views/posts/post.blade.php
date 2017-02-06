@@ -69,6 +69,20 @@
                 <strong>{{ $comment->created_at->diffForHumans() }}</strong>&nbsp
                 by [<strong>{{ $comment->user->name}}</strong>]:&nbsp
                 {{ $comment->body }}
+                
+                {{-- Delete Comment button --}}
+	
+                    <form method="POST" action="/comments/{{ $comment->id }}" style="display: inline;">
+                        
+                        {{ method_field('DELETE') }}
+                        
+                        {{ csrf_field() }}
+                        
+                        <input type="submit" class="btn-link pull-right" value="Delete Comment"></input>
+                        
+                    </form>
+                
+                
             </li>
         @endforeach
 		</ul>
