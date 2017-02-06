@@ -31,7 +31,6 @@ export function setEventHandlers() {
 	
 	// Display file name upon Page Selection
 	$("#pageFile").change(function(evt) {
-		alert('HELLO!');
 		handlePageSelect(evt, "#pageInfo");
 	});		
 }	

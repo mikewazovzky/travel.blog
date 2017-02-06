@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Validator;
+use App\Events\UserRegistered;
 use App\Post;
 
 class User extends Authenticatable
@@ -30,6 +31,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+	
+	protected $events = [
+		'created' => UserRegistered::class,
+	];
     
     public function posts()
     {

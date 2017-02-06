@@ -11073,7 +11073,6 @@ function setEventHandlers() {
 
 	// Display file name upon Page Selection
 	$("#pageFile").change(function (evt) {
-		alert('HELLO!');
 		__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__service__["b" /* handlePageSelect */])(evt, "#pageInfo");
 	});
 }

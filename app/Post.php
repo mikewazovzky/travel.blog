@@ -7,6 +7,7 @@ use App\Tag;
 use App\Comment;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Events\PostPublished;
 
 class Post extends Model
 {
@@ -25,6 +26,10 @@ class Post extends Model
 	 */
 	
 	protected $fillable = ['title', 'slug', 'country', 'type', 'excert'];
+  
+	protected $events = [
+		'created' => PostPublished::class,
+	];  
   
 	/**
 	 * Override method model binding uses for retrieving a given model class to use database column other then (default) 'id'

@@ -2,30 +2,12 @@
 
 namespace App\Listeners;
 
-use App\Events\UserRegistered;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
+use App\Mail\NewUserNotification;
 
-class UserRegisteredNotification
+class UserRegisteredNotification extends AdminNotification
 {
-    /**
-     * Create the event listener.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
-
-    /**
-     * Handle the event.
-     *
-     * @param  UserRegistered  $event
-     * @return void
-     */
-    public function handle(UserRegistered $event)
-    {
-        //
-    }
+    public function getMail($event)
+	{
+		return new NewUserNotification($event->user);
+	}
 }
