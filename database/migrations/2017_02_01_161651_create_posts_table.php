@@ -25,6 +25,7 @@ class CreatePostsTable extends Migration
 			$table->enum('type', ['blade', 'html'])->default('html');
             $table->text('excert');
             $table->string('featured')->nullable();   // featured image
+			$table->string('thumbnail')->nullable();   // featured image thumbnail
 			$table->string('page')->nullable(); 
 			
             $table->timestamps();

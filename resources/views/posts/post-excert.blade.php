@@ -1,7 +1,7 @@
 <div class="row blog-post">
 
 	<div class="col-sm-4">
-		<img class="img-responsive" src="{{ $post->featured ? '/uploads/images/' . $post->featured : ''}}"/>
+		<img class="img-responsive" src="{{ $post->thumbnail ? '/uploads/images/' . $post->thumbnail : ''}}"/>
 	</div>
 	
 	<div class="col-sm-8">
@@ -37,7 +37,7 @@
 		
 		</p>
 
-		<p>{{ mb_substr($post->excert, 0, 200) . ' [...]' }}</p>
+		<p>{{ mb_substr($post->excert, 0, 300) . ' [...]' }}</p>
 		
 	</div>
 

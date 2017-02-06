@@ -46,7 +46,7 @@ class Post extends Model
 	public function setTitleAttribute($value)
     {
         $this->attributes['title'] = $value;
-		$this->attributes['slug'] = $this->slug($value);		
+		$this->attributes['slug'] = $this->slugName($value);		
     }
     
 	/**
@@ -170,55 +170,74 @@ class Post extends Model
 	 */
     public function loadPage($file)
     {            
-        $filename = $this->filename($file);
+        $filename = $this->fileName($file);
         
         if(!$file->move(self::PATH_TO_PAGES, iconv("utf-8","cp1251",  $filename))) {
             return false;
         }          
         if($this->page) {
-            $this->deletePage();
-        }          
+            \File::delete(self::PATH_TO_PAGES . iconv("utf-8","cp1251",  $this->page));
+        }   
+		
         $this->page = $filename;  
 		
 		return true;
     }   
     
 	/**
-	 * Upload user image file.
+	 * Upload user featured image file.
+	 * Make and save featured image thumbnail
 	 *
 	 * @param Illuminate\Http\UploadedFile
 	 * @return boolean
 	 */	
     public function loadFeatured($file)
     {            
-        $filename = $this->filename($file);
+        $filename = $this->fileName($file);
         
 		if(!$file->move(self::PATH_TO_IMAGES, iconv("utf-8","cp1251",  $filename))) {
             return false;
         }  
         
         if($this->featured) {
-            $this->deleteFeatured();
+            \File::delete(self::PATH_TO_IMAGES . iconv("utf-8","cp1251",  $this->featured));
         }  
-        
-        $this->featured = $filename;  
+		
+        if($this->thumbnail) {
+            \File::delete(self::PATH_TO_IMAGES . iconv("utf-8","cp1251",  $this->thumbnail));
+        }         
+		
+		$this->featured = $filename; 
+		
+		$this->makeThumbnail();
+		$this->thumbnail =  $this->thumbnailName();
 
 		return true;
     }    
-    
+		
 	/**
-	 * Construct uploaded file name.
-	 *
-	 * @param Illuminate\Http\UploadedFile
-	 * @return string fileName.fileExtention
-	 */		
-    public function filename($file)
-    {
-        $name = time() . '-' . $this->slug();
-		$extension = $file->getClientOriginalExtension();
-        
-        return $name . '.' . $extension;  
-    }
+	 * Create uploaded file name as timestamp-slug.orogonalFileExtention
+	 * 
+	 * @return string 
+	 */	
+	protected function fileName($file)
+	{
+		$name = time() . '-' . $this->slugName();
+		
+		$extention = $file->getClientOriginalExtension();
+		
+		return "{$name}.{$extention}";
+	}  
+	
+	/**
+	 * Create feature thumbnail name
+	 * 
+	 * @return string 
+	 */	
+	protected function thumbnailName()
+	{
+		return '/tn-' . $this->featured;
+	}
 
 	/**
      * Delete post, image and user page files if exist(s)
@@ -233,52 +252,25 @@ class Post extends Model
         }     
 		
         if($this->featured) {
-            $this->deleteFeatured();
+            \File::delete(self::PATH_TO_IMAGES . iconv("utf-8","cp1251", $this->featured));
         }
 		
+        if($this->thumbnail) {
+            \File::delete(self::PATH_TO_IMAGES . iconv("utf-8","cp1251", $this->thumbnail));
+        }		
+		
         if($this->page) {
-            $this->deletePage();
+            \File::delete(self::PATH_TO_PAGES . iconv("utf-8","cp1251", $this->page));
         }
 		return true;
 	}	
 
 	/**
-     * Delete featured image file if exists
-     *
-     * @return boolean
-     */	
-	protected function deleteFeatured()
-    {
-        if(!$this->featured) {
-            return true;
-        }
-		
-        $imageFile = self::PATH_TO_IMAGES . iconv("utf-8","cp1251", $this->featured);
-		return unlink($imageFile);	
-    }	
-	
-	/**
-     * Delete user page file if exists
-     *
-     * @return boolean
-     */	
-    
-	protected function deletePage()
-    {
-        if(!$this->page) {
-            return true;
-        }
-		
-        $pageFile = self::PATH_TO_PAGES . iconv("utf-8","cp1251", $this->page);
-		return unlink($pageFile);	
-    }
-	
-	/**
 	 * Construct post slug. Delete dots('.') and replace spaces(' ') with dashes('-')
 	 *
 	 * @return string 
 	 */		
-	public function slug()
+	public function slugName()
 	{
 		return str_replace(' ', '-', str_replace('.', '', $this->title));
 	}
@@ -297,4 +289,19 @@ class Post extends Model
         
         return '';
 	}    
+	
+    /**
+     * Create and save thumbnail for the photo
+     *
+     * @return void
+     */
+	public function makeThumbnail()
+	{
+		$width = 300;
+		$height = 200;
+		
+		\Image::make(self::PATH_TO_IMAGES . iconv("utf-8","cp1251", $this->featured))
+			->fit($width, $height)
+			->save(self::PATH_TO_IMAGES . iconv("utf-8","cp1251", $this->thumbnailName()));
+	}	
 }

@@ -25,6 +25,9 @@ Route::get('/tags', function() {
 	\App\Tag::create(['name' => 'PHP']);
 	\App\Tag::create(['name' => 'Laravel']);
 	
+	$user = \App\User::create(['name' => 'Alex', 'email' => 'alexvn.home@gmail.com', 'password' => bcrypt('password')]);
+	auth()->login($user);
+	
 	// factory(App\Post::class, 12)->create();
 	
 	return redirect('/posts');
@@ -41,10 +44,6 @@ Route::get('/test1', function() {
 
 Route::get('/test', function() {
 
-    $post = Post::where('slug', 'Парк-Гигантских-Деревьев')->first();
 
-	$str = $post->excert;
-	
-	return substr($str, 0, 1000);
 
 });

@@ -12,7 +12,7 @@
 		
 		</div>
 		
-		<div class="col-lg-3 blog-sidebar hidden-md">
+		<div class="col-lg-3 blog-sidebar hidden-xs hidden-sm hidden-md">
 
 			@include('layouts.blog.sidebar')
 		
