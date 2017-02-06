@@ -10,7 +10,7 @@ class PagesController extends Controller
 {
     public function main()
     {
-        $posts = \App\Post::inRandomOrder()->limit(8)->get();
+        $posts = \App\Post::inRandomOrder()->limit(9)->get();
 		
 		return view('pages.main', compact('posts'));
     }
