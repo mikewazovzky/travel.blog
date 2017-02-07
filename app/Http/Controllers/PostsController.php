@@ -59,7 +59,9 @@ class PostsController extends Controller
 		
 		$post->tags()->attach(request('tags'));
         
-        session()->flash('message', 'Your post has been created.');
+        // session()->flash('message', 'Your post has been created.');
+		// session()->flash('flash_message_aside', 'Your post has been created.');
+		flash()->aside('Your post has been created.');
 		
 		event(new \App\Events\PostPublished($post));
         
@@ -118,7 +120,7 @@ class PostsController extends Controller
 
 		$post->tags()->sync((array)request('tags'));
 		
-        session()->flash('message', 'Your post has been updated.');
+        flash()->success('Success', 'Your Post has been updated.');
         
         return redirect('/posts');
     }
@@ -133,7 +135,7 @@ class PostsController extends Controller
     {
         $post->delete();
         
-        session()->flash('alert', 'Your post has been deleted.');
+        flash()->aside('Your post has been deleted.', 'danger');
         
         return redirect('/posts');
     }

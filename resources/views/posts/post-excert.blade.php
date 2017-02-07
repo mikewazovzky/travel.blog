@@ -1,16 +1,16 @@
 <div class="row blog-post">
 
-	<div class="col-sm-5">
+	<div class="col-sm-5 col-md-4">
 	
 		<a href="/uploads/images/{{ $post->featured ?? 'default.jpg' }}" data-lity>
 	
-			<img class="img-responsive" src="/uploads/images/{{ $post->thumbnail ?? 'default.jpg'}}"/>
+			<img class="img-responsive" src="/uploads/images/{{ $post->featured ?? 'default.jpg'}}"/>
 		
 		</a>
 		
 	</div>
 	
-	<div class="col-sm-7">
+	<div class="col-sm-7 col-md-8">
 	
 		<h3 class="blog-post-title">		
 			<a href="/posts/{{ $post->slug}}">			

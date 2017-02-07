@@ -13,10 +13,13 @@
 	<!-- Select2 -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css"/>  
 	
-    <!-- Styles -->
-    <link rel="stylesheet" href="/css/libs/lity.css">    
+    <!-- Lity -->
+    <link rel="stylesheet" href="/css/libs/lity.css">  
+
+	<!-- Sweetalert -->
+	<link rel="stylesheet" href="/css/libs/sweetalert.css"> 
 	
-    <!-- Styles -->
+    <!-- Custom Styles -->
     <link rel="stylesheet" href="/css/app.css">
 	
 	@yield('header.styles')
@@ -53,10 +56,11 @@
 	-->
 		
 	<script src="/js/app.js"></script>
+	<script src="/js/libs/sweetalert-dev.js"></script>
 	
 	@yield('footer.scripts')
     
-    @include('layouts.flash');    
+    @include('flash');    
 	
 </body>
 </html>
