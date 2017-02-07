@@ -1,7 +1,13 @@
 <div class="row blog-post">
 
 	<div class="col-sm-5">
-		<img class="img-responsive" src="{{ $post->thumbnail ? '/uploads/images/' . $post->thumbnail : ''}}"/>
+	
+		<a href="/uploads/images/{{ $post->featured ?? 'default.jpg' }}" data-lity>
+	
+			<img class="img-responsive" src="/uploads/images/{{ $post->thumbnail ?? 'default.jpg'}}"/>
+		
+		</a>
+		
 	</div>
 	
 	<div class="col-sm-7">

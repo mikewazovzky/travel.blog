@@ -6,8 +6,8 @@
  */
 
 require('./bootstrap');
-require('./components/users');
-require('./components/posts');
+require('./libs/lity');
+require('./libs/select2');
 
 
 import { setEventHandlers as userEventHandlers} from './components/users';
