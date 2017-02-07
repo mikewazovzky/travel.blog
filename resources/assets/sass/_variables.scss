@@ -24,7 +24,13 @@ $line-height-base: 1.6;
 $text-color: #636b6f;
 
 // Navbar
-$navbar-inverse-bg: #4682B4;
+$navbar-default-border: none;
+$navbar-default-bg: #4682B4;
+$navbar-default-brand-color: #fff;
+// $navbar-default-brand-hover-color: #fff;
+$navbar-default-link-color: #fff;
+$navbar-default-link-hover-color: #bbb;
+$navbar-default-link-active-color: #bbb;
 
 // Buttons
 $btn-default-color: $text-color;

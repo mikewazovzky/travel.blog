@@ -1,12 +1,19 @@
 /* New Main File*/
 
-// Import google fonts
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800|Roboto+Slab:400,100,300,700);
+// Imported Fonts
+@import url('https://fonts.googleapis.com/css?family=Josefin+Slab|Merriweather+Sans|Oswald|Roboto+Slab');
+
+$font-roboto:   'Roboto Slab', serif;
+$font-merri:    'Merriweather Sans', sans-serif;
+$font-josefin:  'Josefin Slab', serif;
+$font-oswald:   'Oswald', sans-serif;
+
+$font-nav:        $font-oswald;
 
 // background image
 body {
 
-	background-image: url("../images/background.jpg");
+	background-image: url("/images/background.jpg");
 	background-repeat: no-repeat;	
 	background-position: left top;
 	background-attachment: fixed;
@@ -87,7 +94,8 @@ body {
 /** Navbar **/
 
 .navbar-default {
-	font: bold 14px "Open Sans",sans-serif;
+	font-family: $font-nav;
+	font-size: 16px;
 } 
 
 /** Footer **/
