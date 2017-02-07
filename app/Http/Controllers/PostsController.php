@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+
 use App\Post;
 use App\Tools\ImageCollection;
 
@@ -102,7 +104,11 @@ class PostsController extends Controller
     public function update(Post $post)
     {
 		$this->validate(request(), [
-            'title' => 'required|max:255|unique:posts,title',
+            'title' => [
+				'required',
+				'max:255',
+				Rule::unique('posts')->ignore($post->id),
+			],
             'excert' => 'required',
 			'country' => 'required',
 			'featured' => 'sometimes|mimes:jpeg,jpg|max:500'

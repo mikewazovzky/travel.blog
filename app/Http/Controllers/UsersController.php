@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use App\User;
 
@@ -90,6 +91,18 @@ class UsersController extends Controller
 			'name' => 'required',
 			'password' => 'required|min:6|confirmed'			
 		]);	
+		
+		$this->validate($request, [
+			'name' => 'required',
+			'password' => 'required|min:6|confirmed',
+			'avatar' => 'sometimes|mimes:jpeg,jpg|max:100',
+			'email' => [
+				'required', 
+				'email',
+				Rule::unique('users')->ignore($user->id),
+			],
+		]);	
+		
 		
 		$user->updateData($request);	
 		

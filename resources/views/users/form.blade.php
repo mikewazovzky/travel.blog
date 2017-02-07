@@ -22,7 +22,7 @@
 					<div class="form-group">
 						<label for="email" class="control-label col-sm-3">Email:</label>
 						<div class="col-sm-9">
-							<input type="email" name="email" class="form-control" value="{{ isset($user)? $user->email : old('email') }}" {{ isset($user)? 'readonly' : ''}}/>
+							<input type="email" name="email" class="form-control" value="{{ isset($user)? $user->email : old('email') }}" />
 						</div>
 					</div>
 					
