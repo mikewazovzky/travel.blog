@@ -21,8 +21,8 @@ class PostsController extends Controller
     public function index()
     {
         $posts = Post::latest()
-            ->filter(request(['month', 'year']))
-            ->get();  
+            ->filter(request(['month', 'year', 'tag']))
+            ->paginate(5);  
         
         return view('posts.index', compact('posts'));
     }

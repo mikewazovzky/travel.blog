@@ -85,13 +85,21 @@ class Post extends Model
 	 */
     public function scopeFilter($query, $filters) 
     {                 
-        if($month = $filters['month']) {
+        
+		if($month = $filters['month']) {
             $query->whereMonth('created_at', $this->monthNumber($filters['month']));
         }
         
         if($year = $filters['year']) {
             $query->whereYear('created_at', $year);
-        }     
+        }    
+
+        if($tag = $filters['tag']) {
+			$query->whereHas('tags', function($q) use ($tag){
+				$q->where('name', 'like', $tag);
+			});
+        } 
+		
     }
     
 	/**
