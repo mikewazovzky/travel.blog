@@ -11,7 +11,7 @@
 			</button>
 
 			<!-- Branding Image -->
-			<a class="navbar-brand" href="{{ url('/') }}">TravelBlog</a>
+			<a class="navbar-brand" href="{{ url('/') }}">Travel Blog</a>
 			
 		</div>
 

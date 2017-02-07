@@ -8,6 +8,22 @@
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
+
+// Temporary 
+nav {
+	margin-bottom: 0 !important;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+	color: #fff;
+}
+
+.navbar-inverse .navbar-brand {
+	color: #fff;
+}
+
+	
+// Components
 @import "components/users";
 @import "components/flash";
 @import "components/footer";

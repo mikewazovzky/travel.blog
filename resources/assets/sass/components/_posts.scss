@@ -1,5 +1,10 @@
 ﻿// Styling Users Module
 
+.blog-header {
+ background: #5fafef; // rgb(48, 151, 209);
+ color: #fff;
+}
+
 hr {
 	margin-top: 10px;
 	margin-bottom: 10px;
@@ -10,7 +15,6 @@ hr {
 		margin-top: 0;
 	}
 }
-
 
 #featuredImage {
 	margin: 0 auto;
@@ -28,7 +32,7 @@ hr {
 	// display: none;
 }
 
-// Styling User Pages
+// Styling POst Pages
 
 .post-content {
 
