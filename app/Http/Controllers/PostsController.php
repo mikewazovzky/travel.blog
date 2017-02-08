@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\PostUpdateRequest;
 use Illuminate\Validation\Rule;
 
 use App\Post;
@@ -36,7 +37,16 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+		if(auth()->user()->isWriter()) {		
+			
+			return view('posts.create');		
+		
+		}
+		
+		flash()->error('Error', 'You are not authorized to create new Posts.');
+		
+		return back();	
+		
     }
 
     /**
@@ -48,7 +58,7 @@ class PostsController extends Controller
     public function store()
     {
 		$this->validate(request(), [
-            'title' => 'required|max:255|unique:posts,title',
+            'title' => 'required|max:20|unique:posts,title',
             'excert' => 'required',
 			'country' => 'required',
         ]);
@@ -77,6 +87,7 @@ class PostsController extends Controller
     public function show(Post $post)
     {
 		if ($post->type == 'html') {
+			
 			return view('posts.show', compact('post'));
 		}
 		
@@ -93,7 +104,17 @@ class PostsController extends Controller
      */
     public function edit(Post $post)
     {
-		return view('posts.edit', compact('post'));
+		$user = auth()->user();
+		
+		if($user->ownes($post) or $user->isAdmin()) {		
+			
+			return view('posts.edit', compact('post'));			
+		
+		}
+		
+		flash()->error('Error', 'You are not authorized to edit the Post.');
+		
+		return back();
     }
 
     /**
@@ -103,18 +124,9 @@ class PostsController extends Controller
      * @param  \App\Post $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Post $post)
+    public function update(PostUpdateRequest $request, Post $post)
     {
-		$this->validate(request(), [
-            'title' => [
-				'required',
-				'max:255',
-				Rule::unique('posts')->ignore($post->id),
-			],
-            'excert' => 'required',
-			'country' => 'required',
-			'featured' => 'sometimes|mimes:jpeg,jpg|max:500'
-        ]);        
+		// input validation and authorization check via PostUpdateRequest form request
 		
 		$post->fillData(request())->save();
 
@@ -133,10 +145,20 @@ class PostsController extends Controller
      */
     public function destroy(Post $post)
     {
-        $post->delete();
+        $user = auth()->user();
+		
+		if($user->ownes($post) or $user->isAdmin()) {		
+			
+			$post->delete();
         
-        flash()->aside('Your post has been deleted.', 'danger');
+			flash()->aside('Your post has been deleted.', 'danger');
         
-        return redirect('/posts');
+			return redirect('/posts');		
+		
+		}
+		
+		flash()->error('Error', 'You are not authorized to edit the Post.');
+		
+		return back();
     }
 }

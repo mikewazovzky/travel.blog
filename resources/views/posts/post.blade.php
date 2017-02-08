@@ -10,14 +10,16 @@
 	Author: <a href="#">{{ $post->user->name }}</a>
     
 	Created At:		
-	{{ $post->created_at->toFormattedDateString() }} 		
+	<strong>{{ $post->created_at->toFormattedDateString() }}</strong>		
 	
 	Updated At:		
-	{{ $post->updated_at->toFormattedDateString() }} 	
+	<strong>{{ $post->updated_at->toFormattedDateString() }}</strong>	
 	<br>
     
-	Type: &nbsp
-	<a href="#">{{ $post->type }}</a>
+	@if (Auth::user()->isAdmin())
+		Type: &nbsp
+		<a href="#">{{ $post->type }}</a>
+	@endif
 	
     @if(count($post->tags))
 		Tags: &nbsp
@@ -27,29 +29,34 @@
 	@endif
 	<br>
 	
-	{{-- Edit button --}}
+	
+	@if (Auth::user()->isAdmin() or Auth::user()->ownes($post))
+	
+		{{-- Edit button --}}
 
-	<form method="GET" action="/posts/{{ $post->slug }}/edit" style="display: inline;">
+		<form method="GET" action="/posts/{{ $post->slug }}/edit" style="display: inline;">
+			
+			{{ csrf_field() }}
+			
+			<input type="submit" class="btn btn-primary btn-xs" value="Edit"></input>
+			
+		</form>	
 		
-		{{ csrf_field() }}
 		
-		<input type="submit" class="btn btn-primary btn-xs" value="Edit"></input>
 		
-	</form>	
+		{{-- Delete button --}}
+		
+		<form method="POST" action="/posts/{{ $post->slug }}" style="display: inline;">
+			
+			{{ method_field('DELETE') }}
+			
+			{{ csrf_field() }}
+			
+			<input type="submit" class="btn btn-danger btn-xs" value="Delete"></input>
+			
+		</form>
 	
-	
-	
-	{{-- Delete button --}}
-	
-	<form method="POST" action="/posts/{{ $post->slug }}" style="display: inline;">
-        
-		{{ method_field('DELETE') }}
-		
-		{{ csrf_field() }}
-		
-		<input type="submit" class="btn btn-danger btn-xs" value="Delete"></input>
-		
-	</form>
+	@endif
 	
     <hr>
 	

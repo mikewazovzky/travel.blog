@@ -26,16 +26,11 @@
 			Author:
 			<a href="#">{{ $post->user->name }}</a>
 			
-			<br>
-			Created At:
+			Published:
 			<strong>{{ $post->created_at->toFormattedDateString() }}</strong>
 			
-			Updated At:
-			<strong>{{ $post->updated_at->toFormattedDateString() }}</strong>
-			<br>
-			
 			@if(count($post->tags))
-				Tags: &nbsp
+				<br>Tags: &nbsp
 				@foreach($post->tags as $tag)
 					<a href="/posts/tags/{{ $tag->name }}">{{ $tag->name }} </a>
 				@endforeach

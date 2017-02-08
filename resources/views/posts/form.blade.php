@@ -38,6 +38,7 @@
 </div>
 </div>
 
+
 <!-- Post Tags input (select)-->
 <div class="form-group">
 	<label for="tags" class="col-sm-1 control-label">Tags:</label>

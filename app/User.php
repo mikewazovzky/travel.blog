@@ -45,6 +45,11 @@ class User extends Authenticatable
 	{
 		$this->posts()->save($post);
 	}
+	
+	public function ownes(Post $post)
+	{
+		return $post->user_id == $this->id;
+	}
     
     
     /**
@@ -110,5 +115,9 @@ class User extends Authenticatable
 	{
 		return $this->role == 'Admin';
 	}
-    
+	
+    public function isWriter()
+	{
+		return $this->role == 'Writer' or $this->isAdmin();
+	}
 }
