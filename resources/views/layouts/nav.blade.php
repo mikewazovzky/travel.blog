@@ -29,19 +29,15 @@
 						<li><a href="/posts/create">Create</a></li>
 						<li><a href="/tags">Setup Test Environment</a></li>
 					</ul>
-                </li>				
+                </li>		
+				<li><a href="/articles">News</a></li>					
 				<li><a href="/about">About</a></li>
 				<li><a href="/contacts">Contacts</a></li>
-  
 			</ul>
 
 			<!-- Right Side Of Navbar -->
 			<ul class="nav navbar-nav navbar-right">
-            
-				
-				
-				
-				
+			
 				@if (Auth::guest())
 					<!-- Authentication Links -->
 					<li><a href="{{ url('/login') }}">Login</a></li>

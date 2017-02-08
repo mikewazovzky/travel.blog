@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Validator;
 use App\Events\UserRegistered;
 use App\Post;
+use App\Article;
 
 class User extends Authenticatable
 {
@@ -40,7 +41,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class);
     }
-    
+	
+    public function articles()
+    {
+        return $this->hasMany(Article::class);
+    }    
+	
     public function publish(Post $post) 
 	{
 		$this->posts()->save($post);
