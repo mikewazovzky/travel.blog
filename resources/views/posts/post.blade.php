@@ -16,7 +16,7 @@
 	<strong>{{ $post->updated_at->toFormattedDateString() }}</strong>	
 	<br>
     
-	@if (Auth::user()->isAdmin())
+	@if (Auth::check() && Auth::user()->isAdmin())
 		Type: &nbsp
 		<a href="#">{{ $post->type }}</a>
 	@endif
@@ -30,7 +30,7 @@
 	<br>
 	
 	
-	@if (Auth::user()->isAdmin() or Auth::user()->ownes($post))
+	@if (Auth::check() && (Auth::user()->isAdmin() or Auth::user()->ownes($post)))
 	
 		{{-- Edit button --}}
 
