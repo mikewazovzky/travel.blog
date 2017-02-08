@@ -12,5 +12,7 @@
 	@include('news.form')
 	
 </form>
+
+@include('errors.list')
 		
 @endsection

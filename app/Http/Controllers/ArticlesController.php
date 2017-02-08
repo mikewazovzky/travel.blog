@@ -41,7 +41,12 @@ class ArticlesController extends Controller
      */
     public function store()
     {
-        if($user = auth()->user()) {
+        $this->validate(request(), [
+			'title' => 'required|min:5',
+			'body' => 'required|min:5'
+		]);
+		
+		if($user = auth()->user()) {
 			$user->articles()->create(request(['title', 'body']));
 		}
 		
@@ -79,6 +84,12 @@ class ArticlesController extends Controller
      */
     public function update(Article $article)
     {
+		$this->validate(request(), [
+			'title' => 'required|min:5',
+			'body' => 'required|min:5'
+		]);
+		
+		
 		$article->update(request(['title', 'body']));
 		
 		return redirect('/articles');	

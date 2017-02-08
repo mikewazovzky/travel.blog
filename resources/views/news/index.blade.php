@@ -7,7 +7,8 @@
 	<h3>Publish new Aricle</h3>
 
 	<form method="POST" action="/articles" class="form-horizontal">
-		@include('news.form')	
+		@include('news.form')
+		@include('errors.list')
 	</form>	
 
 	<hr>
