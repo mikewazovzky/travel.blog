@@ -105,5 +105,10 @@ class User extends Authenticatable
         $imageFile = self::PATH_TO_IMAGES . $this->avatar;
 		return unlink($imageFile);	
     }
+	
+	public function isAdmin()
+	{
+		return $this->role == 'Admin';
+	}
     
 }

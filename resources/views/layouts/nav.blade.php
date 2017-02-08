@@ -38,22 +38,32 @@
 			<!-- Right Side Of Navbar -->
 			<ul class="nav navbar-nav navbar-right">
             
-				<!-- Users Navbar -->
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Users <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="/users">Index</a></li>
-						<li><a href="/users/create">Create</a></li>
-						<li role="separator" class="divider"></li>
-						<li><a href="#">About User Administration </a></li>
-					</ul>
-                </li>                  
-            
-				<!-- Authentication Links -->
+				
+				
+				
+				
 				@if (Auth::guest())
+					<!-- Authentication Links -->
 					<li><a href="{{ url('/login') }}">Login</a></li>
 					<li><a href="{{ url('/register') }}">Register</a></li>
 				@else
+					@if (Auth::user()->isAdmin())
+						<!-- Users Administration -->
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Users <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="/users">Index</a></li>
+								<li><a href="/users/create">Create</a></li>
+								<li role="separator" class="divider"></li>
+								<li><a href="#">About User Administration </a></li>
+							</ul>
+						</li>
+					@else
+						<!-- Edit Profile -->
+						<li><a href="/users/{{ Auth::id() }}/edit">Profile</a></li>
+					@endif
+				
+				
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
 							{{ Auth::user()->name }} <span class="caret"></span>

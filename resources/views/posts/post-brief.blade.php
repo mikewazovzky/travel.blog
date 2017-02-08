@@ -4,8 +4,10 @@
 	
 	<a href="/uploads/images/{{ $post->featured ?? 'default.jpg' }}" data-lity>
 	
-		<img src="/uploads/images/{{ $post->thumbnail  ?? 'default.jpg' }}"/>
-	
+		<div class="img">
+			<img src="/uploads/images/{{ $post->thumbnail  ?? 'default.jpg' }}"/>
+		</div>
+
 	</a>
 	
 	<p>	{{ $post->excert }}</p>
