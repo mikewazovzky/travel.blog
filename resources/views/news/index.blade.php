@@ -2,13 +2,17 @@
 
 @section('news-content')	
 
-<h3>Publish new Aricle</h3>	
-<form method="POST" action="/articles" class="form-horizontal">
-	@include('news.form')	
-</form>	
+@if (Auth::check() && Auth::user()->isAdmin())
 
+	<h3>Publish new Aricle</h3>
 
-<hr>
+	<form method="POST" action="/articles" class="form-horizontal">
+		@include('news.form')	
+	</form>	
+
+	<hr>
+@endif
+
 @foreach($articles as $article)		
 	<div class="article">
 		<div class="panel panel-primary">
