@@ -2,9 +2,11 @@
 
 namespace App\Listeners;
 
-use App\Events\CommentPosted;
+
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use App\Events\CommentPosted;
+use App\Mail\NewCommentPosted;
 
 class CommentPostedNotification
 {
@@ -26,6 +28,8 @@ class CommentPostedNotification
      */
     public function handle(CommentPosted $event)
     {
-        //
+		$author = $event->comment->post->user->email; 
+		
+		\Mail::to($author)->send(new NewCommentPosted($event->comment));
     }
 }

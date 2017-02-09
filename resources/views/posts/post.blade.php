@@ -77,7 +77,10 @@
                 by [<strong>{{ $comment->user->name}}</strong>]:&nbsp
                 {{ $comment->body }}
                 
-                {{-- Delete Comment button --}}
+				
+				@if( auth()->user() && (auth()->user()->isAdmin() || auth()->user()->ownes($comment->post) || auth()->user()->ownes($comment)) )
+				
+					{{-- Delete Comment button --}}
 	
                     <form method="POST" action="/comments/{{ $comment->id }}" style="display: inline;">
                         
@@ -88,7 +91,8 @@
                         <input type="submit" class="btn-link pull-right" value="Delete Comment"></input>
                         
                     </form>
-                
+					
+                @endif
                 
             </li>
         @endforeach

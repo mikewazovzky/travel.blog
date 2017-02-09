@@ -37,17 +37,9 @@ Route::get('/tags', function() {
 	return redirect('/posts');
 });
 
-Route::get('/test1', function() {
 
-    $img = \Image::make('images/messa.jpg')->resize(200, 200);
+Route::get('/test', function() {
 
-    return $img->response('jpg');
-
-});
-
-Route::get('/test/{post}', function(Post $post) {
-
-    // $post = Post::where('slug', 'Testing-Events-&-Mail-#2')->first();
-    return $post;
+	return Post::byCountry();
 
 });

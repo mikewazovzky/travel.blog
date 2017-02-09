@@ -22,8 +22,9 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('layouts.blog.sidebar', function($view){
             $archives = Post::archives();
             $tags = Tag::pluck('name');
+			$countries = Post::byCountry();
             
-            $view->with(['archives' => $archives, 'tags' => $tags]);
+            $view->with([ 'archives' => $archives, 'tags' => $tags, 'countries' => $countries ]);
         });        
         
         view()->composer('posts.form', function($view){

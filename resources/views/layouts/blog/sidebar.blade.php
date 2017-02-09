@@ -4,9 +4,9 @@
         <div class="sidebar-module">
             <h4>Countries</h4>
             <ul class="list-unstyled">
-				<li><a href="#">Russia</a></li>
-				<li><a href="#">USA</a></li>
-				<li><a href="#">Germany</a></li>
+				@foreach($countries as $country)
+					<li><a href="/posts/?country={{ $country['code'] }}">{{ $country['name'] }} [{{ $country['count'] }}]</a></li>
+				@endforeach
             </ul>
         </div>  
     </div>

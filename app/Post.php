@@ -100,6 +100,9 @@ class Post extends Model
 			});
         } 
 		
+        if($country = $filters['country']) {
+			$query->where('country', '=', $country);
+		} 		
     }
     
 	/**
@@ -116,6 +119,26 @@ class Post extends Model
             ->get()
             ->toArray();        
     }
+
+	/**
+	 * Build array of Posts data as { 'country', 'country_code', 'count'}.
+	 *
+	 * @param 
+	 * @return array 
+	 */
+    public static function byCountry()
+    {
+        $arr = Post::selectRaw('country country, count(*) count')
+            ->groupBy('country')
+            ->orderByRaw('count desc')
+            ->get()
+            ->toArray(); 
+				
+		return array_map(function($item) {
+			return ['name' => country($item['country']), 'code' => $item['country'], 'count' => $item['count']];
+		}, $arr);	      
+    }
+
     
 	/**
 	 * Post has many comments, one to many relations.

@@ -52,11 +52,11 @@ class User extends Authenticatable
 		$this->posts()->save($post);
 	}
 	
-	public function ownes(Post $post)
+	// define parameter type as interface!
+	public function ownes($item)
 	{
-		return $post->user_id == $this->id;
-	}
-    
+		return $item->user_id == $this->id;
+	} 
     
     /**
      * Fill User data with request input parameters and save.
