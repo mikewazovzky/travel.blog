@@ -2,8 +2,6 @@
 
 use App\Post;
 
-
-
 Auth::routes();
 
 // Route::get('/home', 'HomeController@index');
@@ -21,10 +19,18 @@ Route::delete('/comments/{comment}', 'CommentsController@destroy');
 
 Route::resource('/articles', 'ArticlesController');
 
+// Tags
+Route::get('/tags', function() {
+	return view('tags.tags');
+});
 
+// Ajax tags API
+Route::get('/api/tags', 'TagsController@list');
+Route::post('/api/tags/create', 'TagsController@store');
+Route::delete('/api/tags/{tag}', 'TagsController@destroy');
 
 /* Testing and Debugging */
-Route::get('/tags', function() {
+Route::get('/setuptags', function() {
 	\App\Tag::create(['name' => 'Personal']);
 	\App\Tag::create(['name' => 'Travel']);
 	\App\Tag::create(['name' => 'PHP']);

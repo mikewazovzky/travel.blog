@@ -44,7 +44,7 @@
 	<label for="tags" class="col-sm-1 control-label">Tags:</label>
 	<div class="col-sm-11">
 		<select class="form-control" id="tags" name="tags[]" multiple>
-			@foreach($tags as $tagId => $tagName)
+			 @foreach($tags as $tagId => $tagName)
 				<option value="{{ $tagId }}" {{ (isset($post) && $post->tags->contains('id', $tagId))? 'selected' : '' }}>{{ $tagName }}</option>
 			@endforeach
 		</select>
@@ -103,9 +103,57 @@
 @section('footer.scripts')
     <!-- Post Tags Select2 Multiselection input -->	
     <script type="text/javascript">
+
 		$('#tags').select2({
-			placeholder: "Choose a tag"			
-		});		
+			placeholder: "Select tag(s)",
+			// allows creation of new tags
+			tags: true,  
+     		createTag: function (params) {
+     			var term = $.trim(params.term);
+
+    			if (term === '') {
+      				return null;
+    			};
+
+    			// console.log(term);
+
+         		return {
+             		id: term,
+             		text: term,
+             		new: true
+         		};
+     		}			
+ 		}).on('select2:select', function (evt) {
+
+     		// check if newly created element was selected
+     		if(evt.params.data.new != true) {
+         		return;
+     		}
+
+     		var select2element = $(this);
+
+     		$.ajaxSetup({
+        		headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+    		});
+
+	     	$.post('/api/tags/create', { name: evt.params.data.text }, function( data ) {	     		
+
+	        	// Add HTML option to select field
+	        	$('<option value="' + data.id + '">' + data.name + '</option>').appendTo(select2element);
+
+	        	// Replace the tag name in the current selection with the new persisted ID
+	        	var selection = select2element.val();
+	        	var index = selection.indexOf(data.name);            
+
+	        	if (index !== -1) {
+	            	selection[index] = data.id.toString();
+	        	}
+
+	        	select2element.val(selection).trigger('change');
+
+     		}, 'json');
+ 		});
+
 	</script>
 @stop
 

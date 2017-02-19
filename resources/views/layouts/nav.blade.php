@@ -44,6 +44,9 @@
 					<li><a href="{{ url('/register') }}">Register</a></li>
 				@else
 					@if (Auth::user()->isAdmin())
+						<!-- Tags Administration -->
+						<li><a href="/tags">Tags</a></li>
+
 						<!-- Users Administration -->
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Users <span class="caret"></span></a>
@@ -53,7 +56,7 @@
 								<li role="separator" class="divider"></li>
 								<li><a href="#">About User Administration </a></li>
 							</ul>
-						</li>
+						</li>						
 					@else
 						<!-- Edit Profile -->
 						<li><a href="/users/{{ Auth::id() }}/edit">Profile</a></li>
