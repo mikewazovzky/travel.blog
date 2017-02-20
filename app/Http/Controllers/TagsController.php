@@ -31,7 +31,7 @@ class TagsController extends Controller
     } 
 
     /**
-     * Return list of tags for specific object
+     * Return list of tags for specific object !!!!!!!!!!!!!!!!!!!!!!!!!!!!!! WORK in PROCESS
      *      create list of all tags
      *      mark Post tags as selected 
      *      return list as JSON array 
@@ -40,8 +40,14 @@ class TagsController extends Controller
      */
     public function postTags(Post $post)
     {
-        $tags1 = Tag::all();
-        $tags2 = $post->tags();
+        $tags = Tag::all(['name'])->toArray();
+
+        // array_walk($tags, function(&$element){
+        //      $element['selected'] = $post->hasTag($element['name'])
+        // });
+
+        var_dump($tags[0]);
+        return 'Done';
     } 
 
     /**
@@ -60,13 +66,29 @@ class TagsController extends Controller
     }   
 
     /**
+     * Update Tag, return updated Tag as json object
+     *
+     * @return \App\Tag as json objects
+     */     
+    public function update(Tag $tag)
+    {
+        // validatetion
+        $this->validate(request(), [
+            'name' => 'required|unique:tags,name'
+        ]);
+
+        $tag->update(request(['name']));
+        return 'Updated';
+    } 
+
+    /**
      * Delete a Tag
      *
      * @return string
      */     
-    public function destroy($id)
+    public function destroy(Tag $tag)
     {
-        Tag::find($id)->delete();
+        $tag->delete();
 
         return 'Deleted';
     }  

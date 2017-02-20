@@ -15,21 +15,19 @@
 		<div id="tags">
 			<h3>{{ message }}</h3>
 			<table class="table table-striped">
-
 				<tr>
 					<th class="col-xs-8">Tag Name</th>
 					<th class="col-xs-2"></th>
 					<th class="col-xs-2"></th>
 				</tr>
-
 				<tbody v-for="(tag, index) in tags">
-
+					<!-- Show Tag -->
 					<tr v-if="!tag.editMode">
 						<td>{{ tag.name }}</td>
 						<td><button class="btn btn-xs btn-block btn-warning" @click="onEdit(index)">Edit</button></td>
 						<td><button class="btn btn-xs btn-block btn-danger" @click="onDelete(index)">Delete</button></td>
 					</tr>	
-
+					<!-- Edit Tag -->
 					<tr v-if="tag.editMode">
 						<td class="tr-tag"><input class="form-control input-tag" v-model="editName"></td>
 						<td><button class="btn btn-xs btn-block btn-primary" @click="onUpdate(index)">Update</button></td>
@@ -41,6 +39,7 @@
 
 			<h3>Create new Tag</h3>
 			<table class="table table-striped">
+				<!-- Create Tag -->
 				<tr>
 					<form>
 						<td class="col-xs-8 tr-tag"><input class="form-control input-tag" v-model="createName"></td>
@@ -90,19 +89,25 @@ window.onload = function () {
 
         methods: {
         	onDelete(index) {
-        		let id = this.tags[index].id;
-        		this.tags.splice(index, 1);
-
+        		let name = this.tags[index].name;
+        		
+        		// prepair ajax call
         		$.ajaxSetup({
         			headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
     			});
 
+        		// ajax request to delete Tag from database
         		let request = $.ajax({
-    				url: '/api/tags/' + id ,
+    				url: '/api/tags/' + name ,
     				type: 'DELETE'
 				});
 
-				request.then(response => alert(response));
+        		// handle response
+				request.then(response => console.log(response));
+
+				// delete tag from array
+				this.tags.splice(index, 1);
+
         	},
 
         	onEdit(index) {
@@ -111,19 +116,39 @@ window.onload = function () {
         	},
 
         	onUpdate(index) {
+
+        		let currentName = this.tags[index].name;
+        		let newName = this.editName;
+
+         		// prepair ajax call
+        		$.ajaxSetup({
+        			headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+    			});       	
+    			
+        		// ajax request to update Tag in a database
+        		let request = $.ajax({
+    				url: '/api/tags/' + currentName,
+    				type: 'PATCH', 
+    				data: {
+    					name: newName
+    				}
+				});    	
+
+        		// handle response
+				request.then(response => console.log(response));
+
+				// update tag 	
         		this.tags[index].name = this.editName;
         		this.tags[index].editMode = false;        		
         	},
 
         	onCreate() {
+        		
         		// create new Tag
         		let tag = {
         			name: this.createName,
         			editMode: false
         		};
-
-        		// add new Tag to array
-        		this.tags.push(tag);
 
         		// prepair ajax call
         		$.ajaxSetup({
@@ -140,8 +165,11 @@ window.onload = function () {
 				});
 
         		// handle response
-				request.then(response => alert(response));
+				request.then(response => console.log(response));
 
+        		// add new Tag to array
+        		this.tags.push(tag);
+        		
         		// reset form parameters
         		this.createName = '';
         	}

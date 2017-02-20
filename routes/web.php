@@ -28,6 +28,10 @@ Route::get('/tags', function() {
 Route::get('/api/tags', 'TagsController@list');
 Route::post('/api/tags/create', 'TagsController@store');
 Route::delete('/api/tags/{tag}', 'TagsController@destroy');
+Route::patch('/api/tags/{tag}', 'TagsController@update');
+Route::get('/test/{post}', 'TagsController@postTags');
+
+
 
 /* Testing and Debugging */
 Route::get('/setuptags', function() {
@@ -44,8 +48,3 @@ Route::get('/setuptags', function() {
 });
 
 
-Route::get('/test', function() {
-
-	return Post::byCountry();
-
-});
