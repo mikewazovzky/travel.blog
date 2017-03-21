@@ -14,4 +14,4 @@ Test project powered by Laravel
 - lity.js  
 - Vue.js  
 
-<p align="center"><img src="https://vuejs.org/images/logo.png"></p>
+<p align="center" width="300px"><img src="https://vuejs.org/images/logo.png"></p>
