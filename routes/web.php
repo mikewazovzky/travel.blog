@@ -31,9 +31,7 @@ Route::delete('/api/tags/{tag}', 'TagsController@destroy');
 Route::patch('/api/tags/{tag}', 'TagsController@update');
 Route::get('/test/{post}', 'TagsController@postTags');
 
-
-
-/* Testing and Debugging */
+/* App initiation for Testing and Debugging purpose */
 Route::get('/setuptags', function() {
 	\App\Tag::create(['name' => 'Personal']);
 	\App\Tag::create(['name' => 'Travel']);
