@@ -2,7 +2,7 @@
 
 ## Project Laravel Travel Blog
 
-Test project powered by Laravel and based on Laracasts (https://laravel.com/) [Laravel 5.4 From Scratch](https://laracasts.com/series/laravel-from-scratch-2017) Series
+Test project powered by Laravel (https://laravel.com/) and based on Laracasts (https://laracasts.com) [Laravel 5.4 From Scratch](https://laracasts.com/series/laravel-from-scratch-2017) Series
 
 ## Libraries and Dev Tools
 
