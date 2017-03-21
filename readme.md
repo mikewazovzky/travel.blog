@@ -16,5 +16,5 @@ Test project powered by Laravel and based on Laracasts (https://laravel.com/) [L
 
 <div align="center">
 	<img width="150px" src="https://vuejs.org/images/logo.png">
-	<h1 style="margin-top: 0">Vue.js</h1>
+	<h1 style="margin-top: 0;">Vue.js</h1>
 </div>
