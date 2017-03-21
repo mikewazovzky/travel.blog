@@ -2,7 +2,7 @@
 
 ## Project Laravel Travel Blog
 
-Test project powered by Laravel and based on Laracasts (https://laravel.com/) (Laravel 5.4 From Scratch) [https://laracasts.com/series/laravel-from-scratch-2017] Series
+Test project powered by Laravel and based on Laracasts (https://laravel.com/) [Laravel 5.4 From Scratch](https://laracasts.com/series/laravel-from-scratch-2017) Series
 
 ## Libraries and Dev Tools
 
@@ -15,6 +15,6 @@ Test project powered by Laravel and based on Laracasts (https://laravel.com/) (L
 - Vue.js  https://vuejs.org/
 
 <p align="center">
-	<img width="200px" src="https://vuejs.org/images/logo.png">
-	<h1>Vue.js</h1>
+	<img width="150px" src="https://vuejs.org/images/logo.png">
+	<h1 align="center">Vue.js</h1>
 </p>
