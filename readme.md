@@ -14,7 +14,7 @@ Test project powered by Laravel and based on Laracasts (https://laravel.com/) [L
 - lity.js  http://sorgalla.com/lity/
 - Vue.js  https://vuejs.org/
 
-<p align="center">
+<div align="center">
 	<img width="150px" src="https://vuejs.org/images/logo.png">
-	<h1 align="center">Vue.js</h1>
-</p>
+	<h1>Vue.js</h1>
+</div>
